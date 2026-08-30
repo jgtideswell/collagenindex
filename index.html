@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -161,11 +162,6 @@
             color: var(--text-muted);
             line-height: 1.6;
             font-weight: 300;
-        }
-
-        /* Mobile Rotate Notice (Hidden by default) */
-        .mobile-rotate-notice {
-            display: none;
         }
 
         /* Table Container */
@@ -445,23 +441,61 @@
                 font-size: 1.8rem;
             }
             
-            /* Show the mobile rotate notice */
-            .mobile-rotate-notice {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 0.5rem;
-                background-color: #FDF9F6;
-                border: 1px dashed var(--accent);
-                color: var(--text-main);
-                font-size: 0.9rem;
-                padding: 0.8rem;
-                border-radius: 8px;
-                margin-bottom: 1.25rem;
+            /* --- CARD VIEW FOR MOBILE --- */
+            .table-container {
+                background-color: transparent;
+                border: none;
+                box-shadow: none;
+                overflow-x: hidden; 
             }
-            
-            th, td {
-                padding: 0.75rem 1rem;
+
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+            tbody tr {
+                border: 1px solid var(--border);
+                border-radius: 12px;
+                margin-bottom: 1.25rem;
+                background-color: var(--surface);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+                padding: 0.5rem 1rem;
+            }
+
+            tbody tr:hover td {
+                background-color: transparent; 
+            }
+
+            td {
+                border: none;
+                border-bottom: 1px solid var(--border);
+                position: relative;
+                padding: 0.85rem 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: right;
+            }
+
+            td:last-child {
+                border-bottom: none;
+            }
+
+            td::before {
+                content: attr(data-label);
+                font-weight: 500;
+                color: var(--text-muted);
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                text-align: left;
+                margin-right: 1rem;
             }
 
             .pricing-note {
@@ -566,10 +600,6 @@
                 <h2>Find Your Perfect Collagen Match</h2>
                 <p>Navigating the UK wellness market doesn't have to be complicated. We’ve built a completely unbiased, easily searchable database so you can directly compare top marine and bovine collagen supplements side-by-side. Filter by brand, source, or price to find the exact formula that fits your routine—without the marketing noise.</p>
             </section>
-            
-            <div class="mobile-rotate-notice">
-                <span style="font-size: 1.2rem;">📱</span> <span><strong>Pro Tip:</strong> Rotate your phone sideways for the best view of the comparison table.</span>
-            </div>
 
             <div class="table-container">
                 <table id="collagen-table">
@@ -722,13 +752,14 @@
                     ? '<span class="price-pending">Pending</span>' 
                     : `£${item.price.toFixed(2)}`;
                 
+                // data-label attributes are critical for the mobile card view CSS
                 row.innerHTML = `
-                    <td class="brand-name">${item.brand}</td>
-                    <td class="product-name">${item.product}</td>
-                    <td>${getSourceTag(item.source)}</td>
-                    <td>${item.dose}</td>
-                    <td class="price-text">${displayPrice}</td>
-                    <td><a href="#" class="buy-btn coming-soon" onclick="event.preventDefault();">Buy Now (Coming Soon)</a></td>
+                    <td data-label="Brand" class="brand-name">${item.brand}</td>
+                    <td data-label="Product" class="product-name">${item.product}</td>
+                    <td data-label="Source">${getSourceTag(item.source)}</td>
+                    <td data-label="Collagen / Serving">${item.dose}</td>
+                    <td data-label="Price" class="price-text">${displayPrice}</td>
+                    <td data-label="Action"><a href="#" class="buy-btn coming-soon" onclick="event.preventDefault();">Buy Now (Coming Soon)</a></td>
                 `;
                 tableBody.appendChild(row);
             });
