@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Collagen Index | UK Database</title>
+    <title>Collagen Index | Compare the Best UK Collagen Supplements</title>
+    <meta name="description" content="Compare the best marine and bovine collagen supplements in the UK. Filter by brand, source, dosage, and price to find the perfect collagen powder or liquid for your wellness goals.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -81,10 +82,10 @@
             display: flex;
             flex: 1;
             flex-direction: row;
-            align-items: flex-start; /* Allows children to define their own height */
+            align-items: flex-start; 
         }
 
-        /* Sidebar Styling - Now Sticky */
+        /* Sidebar Styling - Sticky */
         .sidebar {
             width: 280px;
             background-color: var(--background);
@@ -94,7 +95,7 @@
             flex-direction: column;
             gap: 1.5rem;
             position: sticky;
-            top: 73px; /* Sits just below the sticky header */
+            top: 73px; 
             height: calc(100vh - 73px);
             overflow-y: auto;
             flex-shrink: 0;
@@ -138,10 +139,10 @@
             flex: 1;
             padding: 2rem;
             background-color: var(--background);
-            min-width: 0; /* Prevents flex blowout on mobile */
+            min-width: 0; 
         }
 
-        /* Table Container - Allows horizontal scroll only on mobile */
+        /* Table Container */
         .table-container {
             background-color: var(--surface);
             border-radius: 12px;
@@ -149,6 +150,7 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.03);
             overflow-x: auto; 
             -webkit-overflow-scrolling: touch;
+            margin-bottom: 4rem; /* Space between table and SEO text */
         }
 
         table {
@@ -158,7 +160,6 @@
             text-align: left;
         }
 
-        /* Condensed Padding for rows */
         th, td {
             padding: 0.85rem 1.25rem;
             border-bottom: 1px solid var(--border);
@@ -230,7 +231,6 @@
             white-space: nowrap;
         }
         
-        /* Coming Soon State */
         .buy-btn.coming-soon {
             background-color: var(--surface);
             color: var(--text-muted);
@@ -246,13 +246,122 @@
             box-shadow: none;
         }
 
+        /* SEO Editorial Section */
+        .seo-section {
+            max-width: 900px;
+            margin: 0 auto 3rem auto;
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        .seo-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .seo-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .seo-section p {
+            font-weight: 300;
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 1.5rem;
+            padding: 2.5rem 1.5rem;
             background-color: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+
+        .affiliate-disclosure {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 1.5rem auto;
+            line-height: 1.5;
+        }
+
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin: 0 1rem;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-copyright {
             color: var(--text-muted);
             font-size: 0.85rem;
-            border-top: 1px solid var(--border);
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--text-main);
+            color: var(--surface);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 9999;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        .cookie-text {
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .cookie-text a {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .cookie-btn {
+            background-color: var(--accent);
+            color: var(--surface);
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            margin-left: 1.5rem;
+            white-space: nowrap;
+            transition: background-color 0.3s ease;
+        }
+
+        .cookie-btn:hover {
+            background-color: var(--accent-hover);
         }
 
         /* Mobile Responsive Breakpoint */
@@ -269,7 +378,6 @@
                 flex-direction: column;
             }
 
-            /* Un-stick the sidebar on mobile so it stacks naturally */
             .sidebar {
                 width: 100%;
                 border-right: none;
@@ -295,6 +403,26 @@
             
             th, td {
                 padding: 0.75rem 1rem;
+            }
+
+            .seo-section {
+                padding: 0 0.5rem;
+            }
+
+            .seo-section h2 {
+                font-size: 1.7rem;
+            }
+
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .cookie-btn {
+                margin-left: 0;
+                margin-top: 1rem;
+                width: 100%;
             }
         }
     </style>
@@ -360,6 +488,7 @@
         </aside>
 
         <main class="main-content">
+            
             <div class="table-container">
                 <table id="collagen-table">
                     <thead>
@@ -376,12 +505,40 @@
                         </tbody>
                 </table>
             </div>
+
+            <section class="seo-section">
+                <h2>Your Guide to the Best Collagen Supplements in the UK</h2>
+                <p>Welcome to the Collagen Index, the UK's most comprehensive and transparent database for comparing daily collagen supplements. Whether you are looking for the <strong>best marine collagen for skin elasticity</strong>, premium <strong>bovine collagen peptides for joint health</strong>, or high-dose liquid formulas for anti-aging and hair growth, navigating the wellness market can be overwhelming. We cut through the marketing noise to bring you the raw data.</p>
+
+                <h3>Marine Collagen vs. Bovine Collagen</h3>
+                <p>One of the most frequent questions buyers have is choosing between marine and bovine sources. <strong>Marine collagen</strong> (sourced from fish skin and scales) is highly bioavailable and primarily consists of Type I collagen, making it the preferred choice for skin rejuvenation, hair vitality, and nail strength. <strong>Bovine collagen</strong> (sourced from pasture-raised or grass-fed cattle) provides a robust blend of Type I and Type III collagen, which is highly beneficial for muscle recovery, joint support, and gut health.</p>
+                <p>Use our interactive filter above to instantly sort top UK brands by your preferred protein source, ensuring you find exactly what your body needs.</p>
+
+                <h3>Liquid, Powder, or Capsules: Which is Best?</h3>
+                <p>Collagen supplements come in a variety of formats to suit different lifestyles. <strong>Hydrolyzed collagen powder</strong> remains incredibly popular due to its versatility—brands like <em>Planet Paleo</em> and <em>Edible Health</em> offer unflavoured peptides that dissolve easily into your morning coffee or smoothies. For those seeking maximum convenience and high absorption rates, <strong>liquid collagen sachets</strong> (such as those from <em>Absolute Collagen</em> and <em>Revive Collagen</em>) provide pre-measured, potent doses ready to drink on the go. We list the exact collagen per serving in grams so you can accurately compare the potency of every product, regardless of format.</p>
+
+                <h3>Why Compare Collagen Brands Here?</h3>
+                <p>Our directory includes trusted UK industry leaders alongside specialized boutique brands, from <em>Ancient + Brave</em> and <em>Bare Biology</em> to <em>Vital Proteins</em> and <em>Gold Collagen</em>. We believe in complete transparency, which is why we standardize serving sizes and list standard retail pricing, allowing you to easily calculate the true cost per gram and find the best value collagen supplement for your routine.</p>
+            </section>
+
         </main>
     </div>
 
     <footer>
-        <p>&copy; 2026 Collagen Index. Designed for clarity.</p>
+        <p class="affiliate-disclosure"><strong>Affiliate Disclosure:</strong> We believe in transparency. Collagen Index is a free resource. We may earn an affiliate commission if you choose to purchase products through the links on this site, at no additional cost to you. This helps support the maintenance of our database. Please read our Methodology page to understand our unbiased listing criteria.</p>
+        
+        <div class="footer-links">
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="methodology.html">Our Methodology</a>
+        </div>
+        
+        <p class="footer-copyright">&copy; 2026 Collagen Index. Designed for clarity.</p>
     </footer>
+
+    <div id="cookie-banner" class="cookie-banner">
+        <p class="cookie-text">We use cookies to enhance your experience, analyze site traffic, and serve tailored content. By continuing to browse the Collagen Index, you consent to our use of cookies. For more details, view our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        <button id="accept-cookies" class="cookie-btn">Got it, thanks</button>
+    </div>
 
     <script>
         const data = [
@@ -547,7 +704,27 @@
         sourceFilter.addEventListener('change', updateView);
         sortFilter.addEventListener('change', updateView);
 
+        // Initial Render
         renderTable(data);
+
+        // Cookie Banner Logic
+        document.addEventListener("DOMContentLoaded", function() {
+            const cookieBanner = document.getElementById("cookie-banner");
+            const acceptBtn = document.getElementById("accept-cookies");
+
+            // Check if user has already accepted
+            if (!localStorage.getItem("collagen_cookie_consent")) {
+                // Show banner after a slight delay for smooth animation
+                setTimeout(() => {
+                    cookieBanner.classList.add("show");
+                }, 500);
+            }
+
+            acceptBtn.addEventListener("click", function() {
+                localStorage.setItem("collagen_cookie_consent", "true");
+                cookieBanner.classList.remove("show");
+            });
+        });
     </script>
 </body>
 </html>
