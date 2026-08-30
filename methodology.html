@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Methodology | Collagen Index</title>
+    <!-- Google Fonts for a premium wellness aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Premium Wellness Color Palette */
+            --background: #FCFAF8; 
+            --surface: #FFFFFF;
+            --border: #EBE5DF;
+            --text-main: #2D2A26; 
+            --text-muted: #857F7A;
+            --accent: #C4A792; 
+            --accent-hover: #b3937d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.65;
+        }
+
+        header {
+            background-color: var(--surface);
+            padding: 1.5rem 3rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        header h1 a {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: var(--text-main);
+            letter-spacing: 0.02em;
+            text-decoration: none;
+        }
+
+        header nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover,
+        header nav a.active {
+            color: var(--accent);
+        }
+
+        .content-container {
+            flex: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            width: 100%;
+        }
+
+        .page-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .page-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            font-weight: 300;
+        }
+
+        .card {
+            background-color: var(--surface);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            margin-bottom: 2rem;
+        }
+
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+            font-weight: 300;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box {
+            background-color: #FDF9F6;
+            border-left: 3px solid var(--accent);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .back-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--surface);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: var(--surface);
+            box-shadow: 0 4px 12px rgba(196, 167, 146, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--surface);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1.25rem 1.5rem;
+            }
+
+            header h1 a {
+                font-size: 1.4rem;
+            }
+
+            .content-container {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .page-header h2 {
+                font-size: 2rem;
+            }
+
+            .card {
+                padding: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><a href="index.html">Collagen Index</a></h1>
+        <nav>
+            <a href="index.html">Database</a>
+        </nav>
+    </header>
+
+    <main class="content-container">
+        <div class="page-header">
+            <h2>Our Methodology</h2>
+            <p>Why we built a direct, transparent directory for collagen supplements.</p>
+        </div>
+
+        <section class="card">
+            <h3>The Problem with Collagen Shopping</h3>
+            <p>If you have ever tried shopping for collagen in the UK, you have likely encountered two major hurdles:</p>
+            <p>1. <strong>Sponsored "Top 10" Lists:</strong> Most review websites are affiliate-driven roundups disguised as independent testing. They rank products based on marketing budgets and commission rates rather than side-by-side comparability.</p>
+            <p>2. <strong>Fragmented Brand Websites:</strong> Every manufacturer website claims to be the most potent, most bioavailable, and purest on the market. Jumping between 20 different tabs just to compare serving sizes, sources, and pricing quickly becomes exhausting.</p>
+        </section>
+
+        <section class="card">
+            <h3>What We Do (and What We Don’t)</h3>
+            <p><strong>We do not lab-test products ourselves.</strong> We do not score formulas based on subjective taste tests or claim that one brand cures wrinkles faster than another.</p>
+            
+            <div class="highlight-box">
+                Our objective is simple: to provide an unbiased, comprehensive directory of as many UK collagen products as possible, laid out in an honest, side-by-side spec sheet.
+            </div>
+
+            <p>We extract and standardize the raw data that actually matters to buyers:</p>
+            <ul style="padding-left: 1.5rem; margin-bottom: 1.25rem; font-weight: 300;">
+                <li style="margin-bottom: 0.5rem;"><strong>Source:</strong> Marine, Bovine, or Multi-source blends.</li>
+                <li style="margin-bottom: 0.5rem;"><strong>Dosage:</strong> Actual grams of active collagen per standard serving.</li>
+                <li style="margin-bottom: 0.5rem;"><strong>Standard Pricing:</strong> Upfront retail cost so you can evaluate true value per gram.</li>
+            </ul>
+            <p>By putting all products in one place without narrative spin, you can filter by what matters to your personal dietary needs and budget.</p>
+        </section>
+
+        <div class="back-cta">
+            <a href="index.html" class="btn-primary">Explore the Database</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Collagen Index. Designed for clarity.</p>
+    </footer>
+
+</body>
+</html>

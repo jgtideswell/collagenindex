@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collagen Index | UK Database</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Premium Wellness Color Palette */
+            --background: #FCFAF8; 
+            --surface: #FFFFFF;
+            --border: #EBE5DF;
+            --text-main: #2D2A26; 
+            --text-muted: #857F7A;
+            --accent: #C4A792; 
+            --accent-hover: #b3937d;
+            
+            /* Subtle Tag Colors */
+            --tag-marine-bg: #F0F4F6;
+            --tag-marine-text: #5A7684;
+            --tag-bovine-bg: #F9F1EB;
+            --tag-bovine-text: #967056;
+            --tag-multi-bg: #F5F0F6;
+            --tag-multi-text: #78647C;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            background-color: var(--surface);
+            padding: 1.25rem 3rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        header h1 a {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--text-main);
+            letter-spacing: 0.02em;
+            text-decoration: none;
+        }
+
+        header nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: var(--accent);
+        }
+
+        .dashboard-container {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            align-items: flex-start; /* Allows children to define their own height */
+        }
+
+        /* Sidebar Styling - Now Sticky */
+        .sidebar {
+            width: 280px;
+            background-color: var(--background);
+            border-right: 1px solid var(--border);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            position: sticky;
+            top: 73px; /* Sits just below the sticky header */
+            height: calc(100vh - 73px);
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .filter-group h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        select {
+            width: 100%;
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--surface);
+            color: var(--text-main);
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23857F7A%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem top 50%;
+            background-size: 0.65rem auto;
+        }
+
+        select:hover, select:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(196, 167, 146, 0.1);
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            background-color: var(--background);
+            min-width: 0; /* Prevents flex blowout on mobile */
+        }
+
+        /* Table Container - Allows horizontal scroll only on mobile */
+        .table-container {
+            background-color: var(--surface);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            overflow-x: auto; 
+            -webkit-overflow-scrolling: touch;
+        }
+
+        table {
+            width: 100%;
+            min-width: 800px; 
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        /* Condensed Padding for rows */
+        th, td {
+            padding: 0.85rem 1.25rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: var(--surface);
+            font-weight: 500;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid var(--border);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: #FCFAF8;
+        }
+
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        .product-name {
+            font-weight: 300;
+            font-size: 0.95rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+        }
+
+        .tag-marine { background-color: var(--tag-marine-bg); color: var(--tag-marine-text); }
+        .tag-bovine { background-color: var(--tag-bovine-bg); color: var(--tag-bovine-text); }
+        .tag-multi { background-color: var(--tag-multi-bg); color: var(--tag-multi-text); }
+
+        .price-text {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        /* Buy Now Button */
+        .buy-btn {
+            display: inline-block;
+            background-color: var(--surface);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            padding: 0.45rem 1rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        /* Coming Soon State */
+        .buy-btn.coming-soon {
+            background-color: var(--surface);
+            color: var(--text-muted);
+            border: 1px dashed var(--text-muted);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        
+        .buy-btn.coming-soon:hover {
+            background-color: var(--surface);
+            border-color: var(--text-muted);
+            color: var(--text-muted);
+            box-shadow: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--surface);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Mobile Responsive Breakpoint */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.25rem;
+            }
+
+            header h1 a {
+                font-size: 1.4rem;
+            }
+
+            .dashboard-container {
+                flex-direction: column;
+            }
+
+            /* Un-stick the sidebar on mobile so it stacks naturally */
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 1.25rem;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                gap: 1rem;
+                position: relative; 
+                top: 0;
+                height: auto;
+                overflow-y: visible;
+                background-color: var(--surface);
+            }
+
+            .filter-group {
+                margin: 0;
+            }
+
+            .main-content {
+                padding: 1.25rem;
+            }
+            
+            th, td {
+                padding: 0.75rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><a href="index.html">Collagen Index</a></h1>
+        <nav>
+            <a href="methodology.html">Our Methodology</a>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="filter-group">
+                <h3>Brand</h3>
+                <select id="brand-filter">
+                    <option value="all">All Brands</option>
+                    <option value="Absolute Collagen">Absolute Collagen</option>
+                    <option value="Ancient + Brave">Ancient + Brave</option>
+                    <option value="Bare Biology">Bare Biology</option>
+                    <option value="Collagelée">Collagelée</option>
+                    <option value="Collanature">Collanature</option>
+                    <option value="Collagen Superdose">Collagen Superdose</option>
+                    <option value="Correxiko">Correxiko</option>
+                    <option value="Dose & Co">Dose & Co</option>
+                    <option value="Edible Health">Edible Health</option>
+                    <option value="Gold Collagen">Gold Collagen</option>
+                    <option value="Hunter & Gather">Hunter & Gather</option>
+                    <option value="Ingenious">Ingenious</option>
+                    <option value="Known Nutrition UK">Known Nutrition UK</option>
+                    <option value="Kollo Health">Kollo Health</option>
+                    <option value="Planet Paleo">Planet Paleo</option>
+                    <option value="Pura Collagen">Pura Collagen</option>
+                    <option value="Pure Collagen Co.">Pure Collagen Co.</option>
+                    <option value="Purolabs">Purolabs</option>
+                    <option value="Revive Collagen">Revive Collagen</option>
+                    <option value="So Body Co">So Body Co</option>
+                    <option value="Vital Proteins">Vital Proteins</option>
+                    <option value="Zooki">Zooki</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <h3>Source</h3>
+                <select id="source-filter">
+                    <option value="all">All Sources</option>
+                    <option value="Bovine">Bovine</option>
+                    <option value="Marine">Marine</option>
+                    <option value="Multi">Multi</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <h3>Sort By</h3>
+                <select id="sort-filter">
+                    <option value="default">Featured</option>
+                    <option value="price-asc">Price (Low to High)</option>
+                    <option value="price-desc">Price (High to Low)</option>
+                </select>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="table-container">
+                <table id="collagen-table">
+                    <thead>
+                        <tr>
+                            <th>Brand</th>
+                            <th>Product</th>
+                            <th>Source</th>
+                            <th>Collagen / Serving</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Collagen Index. Designed for clarity.</p>
+    </footer>
+
+    <script>
+        const data = [
+            // Absolute Collagen
+            { brand: "Absolute Collagen", product: "Marine Liquid Lemon", source: "Marine", dose: "8g", price: 33.99 },
+            { brand: "Absolute Collagen", product: "Marine Liquid Mango & Mandarin", source: "Marine", dose: "8g", price: 33.99 },
+            { brand: "Absolute Collagen", product: "Marine Liquid Raspberry", source: "Marine", dose: "8g", price: 33.99 },
+            
+            // Ancient + Brave
+            { brand: "Ancient + Brave", product: "True Collagen", source: "Bovine", dose: "5g", price: 28.00 },
+            { brand: "Ancient + Brave", product: "Wild Collagen", source: "Marine", dose: "5g", price: 35.00 },
+            { brand: "Ancient + Brave", product: "Cacao + Collagen", source: "Bovine", dose: "2g", price: 28.00 },
+            { brand: "Ancient + Brave", product: "Coffee + Collagen", source: "Bovine", dose: "2g", price: 28.00 },
+            { brand: "Ancient + Brave", product: "Matcha + Collagen", source: "Bovine", dose: "2g", price: 28.00 },
+            
+            // Bare Biology
+            { brand: "Bare Biology", product: "Skinful Pure Marine Collagen", source: "Marine", dose: "5g", price: 39.99 },
+            { brand: "Bare Biology", product: "Skinful Marine Collagen + Vitamin C", source: "Marine", dose: "5g", price: 45.00 },
+            { brand: "Bare Biology", product: "Fundamental Bovine Powder", source: "Bovine", dose: "5g", price: 42.00 },
+
+            // Collagelée
+            { brand: "Collagelée", product: "Marine Beauty Jelly", source: "Marine", dose: "3g", price: 28.00 },
+            { brand: "Collagelée", product: "Vegan Beauty Jelly", source: "Multi", dose: "2g", price: 25.00 },
+
+            // Collanature
+            { brand: "Collanature", product: "Beef Bone Broth Superconcentrate", source: "Bovine", dose: "20g", price: 49.99 },
+            { brand: "Collanature", product: "Wild Berry Bone Broth", source: "Bovine", dose: "20g", price: 49.99 },
+
+            // Collagen Superdose
+            { brand: "Collagen Superdose", product: "Skin Care Liquid", source: "Marine", dose: "5g", price: 24.00 },
+            { brand: "Collagen Superdose", product: "Joint Health Liquid", source: "Bovine", dose: "5g", price: 24.00 },
+            { brand: "Collagen Superdose", product: "Hair Growth Liquid", source: "Marine", dose: "5g", price: 24.00 },
+
+            // Correxiko
+            { brand: "Correxiko", product: "Marine Collagen Powder", source: "Marine", dose: "10g", price: 85.00 },
+            { brand: "Correxiko", product: "Marine Collagen Capsules", source: "Marine", dose: "2.2g", price: 29.00 },
+
+            // Dose & Co
+            { brand: "Dose & Co", product: "Pure Collagen Unflavoured", source: "Bovine", dose: "20g", price: 26.99 },
+            { brand: "Dose & Co", product: "Pure Marine Collagen", source: "Marine", dose: "10g", price: 32.99 },
+            { brand: "Dose & Co", product: "Beauty Collagen Unflavoured", source: "Bovine", dose: "5g", price: 29.99 },
+            { brand: "Dose & Co", product: "Dairy Free Collagen Creamer Vanilla", source: "Bovine", dose: "10g", price: 29.99 },
+
+            // Edible Health
+            { brand: "Edible Health", product: "Bovine Collagen Powder", source: "Bovine", dose: "10g", price: 23.95 },
+            { brand: "Edible Health", product: "Marine Collagen Powder", source: "Marine", dose: "10g", price: 33.95 },
+            { brand: "Edible Health", product: "Type II Marine Capsules", source: "Marine", dose: "400mg", price: 18.95 },
+            { brand: "Edible Health", product: "Vegan Collagen Booster", source: "Multi", dose: "N/A", price: 15.95 },
+
+            // Gold Collagen
+            { brand: "Gold Collagen", product: "Pure Gold Collagen (10 Days)", source: "Marine", dose: "5g", price: 40.00 },
+            { brand: "Gold Collagen", product: "Forte Plus (10 Days)", source: "Marine", dose: "5g", price: 52.00 },
+            { brand: "Gold Collagen", product: "Multidose Pure 40+", source: "Marine", dose: "5g", price: 25.00 },
+
+            // Hunter & Gather
+            { brand: "Hunter & Gather", product: "Bovine Collagen Peptides", source: "Bovine", dose: "10g", price: 22.00 },
+            { brand: "Hunter & Gather", product: "Marine Collagen Peptides", source: "Marine", dose: "10g", price: 30.00 },
+            { brand: "Hunter & Gather", product: "Rise & Glow Tonic", source: "Marine", dose: "5g", price: 32.00 },
+
+            // Ingenious
+            { brand: "Ingenious", product: "Collagen+ Marine Capsules", source: "Marine", dose: "627mg", price: 30.00 },
+            { brand: "Ingenious", product: "Active Collagen Powder", source: "Marine", dose: "5g", price: 45.00 },
+
+            // Known Nutrition UK
+            { brand: "Known Nutrition UK", product: "Marine Collagen Gummies", source: "Marine", dose: "1g", price: 21.99 },
+            { brand: "Known Nutrition UK", product: "Liquid Collagen Apple", source: "Marine", dose: "5g", price: 24.99 },
+
+            // Kollo Health
+            { brand: "Kollo Health", product: "Premium Liquid Marine (28 Days)", source: "Marine", dose: "10g", price: 57.00 },
+
+            // Planet Paleo
+            { brand: "Planet Paleo", product: "Pure Collagen", source: "Bovine", dose: "7.5g", price: 22.00 },
+            { brand: "Planet Paleo", product: "Marine Collagen", source: "Marine", dose: "7.5g", price: 32.00 },
+            { brand: "Planet Paleo", product: "Multi Collagen", source: "Multi", dose: "7.5g", price: 34.00 },
+            { brand: "Planet Paleo", product: "Active Collagen", source: "Bovine", dose: "6g", price: 26.00 },
+            { brand: "Planet Paleo", product: "Digestive Collagen", source: "Bovine", dose: "6g", price: 26.00 },
+            { brand: "Planet Paleo", product: "Keto Collagen", source: "Bovine", dose: "5g", price: 28.00 },
+
+            // Pura Collagen
+            { brand: "Pura Collagen", product: "Glow+ Advanced Skin", source: "Bovine", dose: "10g", price: 39.99 },
+            { brand: "Pura Collagen", product: "Flex+ Advanced Joint", source: "Bovine", dose: "10g", price: 39.99 },
+
+            // Pure Collagen Co.
+            { brand: "Pure Collagen Co.", product: "Pure Marine Collagen Powder", source: "Marine", dose: "5g", price: 25.00 },
+            { brand: "Pure Collagen Co.", product: "Pure Bovine Collagen Powder", source: "Bovine", dose: "10g", price: 20.00 },
+
+            // Purolabs
+            { brand: "Purolabs", product: "Puro Collagen Peptides", source: "Bovine", dose: "10g", price: 29.99 },
+
+            // Revive Collagen
+            { brand: "Revive Collagen", product: "Enhanced Plus Drink (28 Days)", source: "Marine", dose: "10g", price: 76.99 },
+            { brand: "Revive Collagen", product: "Original Marine Drink (28 Days)", source: "Marine", dose: "8.5g", price: 56.99 },
+            { brand: "Revive Collagen", product: "Vegan Collagen Drink (28 Days)", source: "Multi", dose: "2.5g", price: 46.99 },
+
+            // So Body Co
+            { brand: "So Body Co", product: "Peptigen+ Multi-Collagen", source: "Multi", dose: "10g", price: 32.99 },
+
+            // Vital Proteins
+            { brand: "Vital Proteins", product: "Collagen Peptides", source: "Bovine", dose: "20g", price: 30.00 },
+            { brand: "Vital Proteins", product: "Marine Collagen", source: "Marine", dose: "12g", price: 39.00 },
+
+            // Zooki
+            { brand: "Zooki", product: "Collagen Zooki (Liposomal)", source: "Marine", dose: "5g", price: 27.99 }
+        ];
+
+        const tableBody = document.getElementById('table-body');
+        const brandFilter = document.getElementById('brand-filter');
+        const sourceFilter = document.getElementById('source-filter');
+        const sortFilter = document.getElementById('sort-filter');
+
+        function getSourceTag(source) {
+            const lowerSource = source.toLowerCase();
+            return `<span class="tag tag-${lowerSource}">${source}</span>`;
+        }
+
+        function renderTable(products) {
+            tableBody.innerHTML = ''; 
+            
+            if (products.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 3rem; color: var(--text-muted);">No products match your current wellness criteria.</td></tr>';
+                return;
+            }
+
+            products.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="brand-name">${item.brand}</td>
+                    <td class="product-name">${item.product}</td>
+                    <td>${getSourceTag(item.source)}</td>
+                    <td>${item.dose}</td>
+                    <td class="price-text">£${item.price.toFixed(2)}</td>
+                    <td><a href="#" class="buy-btn coming-soon" onclick="event.preventDefault();">Buy Now (Coming Soon)</a></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function updateView() {
+            let filteredData = [...data];
+
+            const brandValue = brandFilter.value;
+            const sourceValue = sourceFilter.value;
+            const sortValue = sortFilter.value;
+
+            if (brandValue !== 'all') {
+                filteredData = filteredData.filter(item => item.brand === brandValue);
+            }
+
+            if (sourceValue !== 'all') {
+                filteredData = filteredData.filter(item => item.source === sourceValue);
+            }
+
+            if (sortValue === 'price-asc') {
+                filteredData.sort((a, b) => a.price - b.price);
+            } else if (sortValue === 'price-desc') {
+                filteredData.sort((a, b) => b.price - a.price);
+            }
+
+            renderTable(filteredData);
+        }
+
+        brandFilter.addEventListener('change', updateView);
+        sourceFilter.addEventListener('change', updateView);
+        sortFilter.addEventListener('change', updateView);
+
+        renderTable(data);
+    </script>
+</body>
+</html>
