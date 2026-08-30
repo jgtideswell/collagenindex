@@ -185,7 +185,7 @@
 
         table {
             width: 100%;
-            min-width: 800px; 
+            min-width: 800px; /* This is the desktop width that caused issues */
             border-collapse: collapse;
             text-align: left;
         }
@@ -402,6 +402,11 @@
 
         /* Mobile Responsive Breakpoint */
         @media (max-width: 768px) {
+            /* Force body to prevent any horizontal overflow */
+            body {
+                overflow-x: hidden;
+            }
+
             header {
                 padding: 1rem 1.25rem;
             }
@@ -449,6 +454,12 @@
                 overflow-x: hidden; 
             }
 
+            /* CRITICAL FIX: Overriding the desktop 800px min-width */
+            table {
+                min-width: 100%; 
+                width: 100%;
+            }
+
             table, thead, tbody, th, td, tr {
                 display: block;
             }
@@ -481,6 +492,7 @@
                 justify-content: space-between;
                 align-items: center;
                 text-align: right;
+                width: 100%;
             }
 
             td:last-child {
@@ -496,6 +508,11 @@
                 letter-spacing: 0.05em;
                 text-align: left;
                 margin-right: 1rem;
+                flex-shrink: 0; /* Prevents the label from getting crushed by long product names */
+            }
+
+            .product-name, .brand-name {
+                word-break: break-word; /* Ensures long names wrap naturally */
             }
 
             .pricing-note {
