@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collagen Index | Compare the Best UK Collagen Supplements</title>
     <meta name="description" content="Compare the best marine and bovine collagen supplements in the UK. Filter by brand, source, dosage, and price to find the perfect collagen powder or liquid for your wellness goals.">
-    <!-- Google Fonts for a premium wellness aesthetic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -151,7 +150,15 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.03);
             overflow-x: auto; 
             -webkit-overflow-scrolling: touch;
-            margin-bottom: 4rem; 
+            margin-bottom: 0.75rem; 
+        }
+
+        .pricing-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 3.5rem;
+            text-align: right;
         }
 
         table {
@@ -412,6 +419,11 @@
                 padding: 0.75rem 1rem;
             }
 
+            .pricing-note {
+                text-align: left;
+                margin-bottom: 2.5rem;
+            }
+
             .seo-section {
                 padding: 0 0.5rem;
             }
@@ -444,7 +456,6 @@
     </header>
 
     <div class="dashboard-container">
-        <!-- Sidebar Filters -->
         <aside class="sidebar">
             <div class="filter-group">
                 <h3>Brand</h3>
@@ -504,7 +515,6 @@
             </div>
         </aside>
 
-        <!-- Main Content (Table + SEO Text) -->
         <main class="main-content">
             
             <div class="table-container">
@@ -520,12 +530,11 @@
                         </tr>
                     </thead>
                     <tbody id="table-body">
-                        <!-- Rows populated by JS -->
-                    </tbody>
+                        </tbody>
                 </table>
             </div>
+            <div class="pricing-note">* Note: All displayed prices reflect standard one-off retail purchases and do not include subscription or recurring discount pricing.</div>
 
-            <!-- SEO Content Section -->
             <section class="seo-section">
                 <h2>Your Guide to the Best Collagen Supplements in the UK</h2>
                 <p>Welcome to the Collagen Index, the UK's most comprehensive and transparent database for comparing daily collagen supplements. Whether you are looking for the <strong>best marine collagen for skin elasticity</strong>, premium <strong>bovine collagen peptides for joint health</strong>, or high-dose liquid formulas for anti-aging and hair growth, navigating the wellness market can be overwhelming. We cut through the marketing noise to bring you the raw data.</p>
@@ -544,7 +553,6 @@
         </main>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p class="affiliate-disclosure"><strong>Affiliate Disclosure:</strong> We believe in transparency. Collagen Index is a free resource. We may earn an affiliate commission if you choose to purchase products through the links on this site, at no additional cost to you. This helps support the maintenance of our database. Please read our Methodology page to understand our unbiased listing criteria.</p>
         
@@ -556,7 +564,6 @@
         <p class="footer-copyright">&copy; 2026 Collagen Index. Designed for clarity.</p>
     </footer>
 
-    <!-- Cookie Banner -->
     <div id="cookie-banner" class="cookie-banner">
         <p class="cookie-text">We use cookies to enhance your experience, analyze site traffic, and serve tailored content. By continuing to browse the Collagen Index, you consent to our use of cookies. For more details, view our <a href="privacy-policy.html">Privacy Policy</a>.</p>
         <button id="accept-cookies" class="cookie-btn">Got it, thanks</button>
