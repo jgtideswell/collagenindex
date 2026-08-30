@@ -142,6 +142,32 @@
             min-width: 0; 
         }
 
+        /* Page Intro Styling */
+        .page-intro {
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        .page-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
+        }
+
+        .page-intro p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Mobile Rotate Notice (Hidden by default) */
+        .mobile-rotate-notice {
+            display: none;
+        }
+
         /* Table Container */
         .table-container {
             background-color: var(--surface);
@@ -414,6 +440,25 @@
             .main-content {
                 padding: 1.25rem;
             }
+
+            .page-intro h2 {
+                font-size: 1.8rem;
+            }
+            
+            /* Show the mobile rotate notice */
+            .mobile-rotate-notice {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                background-color: #FDF9F6;
+                border: 1px dashed var(--accent);
+                color: var(--text-main);
+                font-size: 0.9rem;
+                padding: 0.8rem;
+                border-radius: 8px;
+                margin-bottom: 1.25rem;
+            }
             
             th, td {
                 padding: 0.75rem 1rem;
@@ -517,6 +562,15 @@
 
         <main class="main-content">
             
+            <section class="page-intro">
+                <h2>Find Your Perfect Collagen Match</h2>
+                <p>Navigating the UK wellness market doesn't have to be complicated. We’ve built a completely unbiased, easily searchable database so you can directly compare top marine and bovine collagen supplements side-by-side. Filter by brand, source, or price to find the exact formula that fits your routine—without the marketing noise.</p>
+            </section>
+            
+            <div class="mobile-rotate-notice">
+                <span style="font-size: 1.2rem;">📱</span> <span><strong>Pro Tip:</strong> Rotate your phone sideways for the best view of the comparison table.</span>
+            </div>
+
             <div class="table-container">
                 <table id="collagen-table">
                     <thead>
