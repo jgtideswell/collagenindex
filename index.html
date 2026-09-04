@@ -553,7 +553,7 @@
                 gap: 1.5rem;
             }
             
-            /* --- CARD VIEW FOR MOBILE --- */
+            /* --- E-COMMERCE CARD VIEW FOR MOBILE --- */
             .table-container {
                 background-color: transparent;
                 border: none;
@@ -564,25 +564,25 @@
             table {
                 min-width: 100%; 
                 width: 100%;
+                border-collapse: collapse;
             }
 
-            table, thead, tbody, th, td, tr {
+            /* Display components as blocks to form the card */
+            table, tbody, th, td, tr {
                 display: block;
             }
 
-            thead tr {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
+            thead {
+                display: none; /* Hide header completely on mobile */
             }
 
             tbody tr {
                 border: 1px solid var(--border);
                 border-radius: 12px;
-                margin-bottom: 1.25rem;
+                margin-bottom: 1.5rem;
                 background-color: var(--surface);
                 box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-                padding: 0.5rem 1rem;
+                padding: 1.5rem;
             }
 
             tbody tr:hover td {
@@ -590,50 +590,97 @@
             }
 
             td {
-                border: none;
-                border-bottom: 1px solid var(--border);
-                position: relative;
-                padding: 0.85rem 0;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                text-align: right;
+                border: none !important;
+                padding: 0 !important;
+                text-align: left;
                 width: 100%;
+                display: block;
             }
 
-            td:last-child {
-                border-bottom: none;
-            }
-
-            td::before {
-                content: attr(data-label);
-                font-weight: 500;
-                color: var(--text-muted);
-                font-size: 0.75rem;
+            /* E-commerce specific cell styling */
+            .brand-cell {
+                font-family: 'Outfit', sans-serif !important;
+                font-size: 0.85rem !important;
                 text-transform: uppercase;
                 letter-spacing: 0.05em;
-                text-align: left;
-                margin-right: 1rem;
-                flex-shrink: 0; 
+                color: var(--text-muted) !important;
+                font-weight: 600 !important;
+                margin-bottom: 0.25rem;
+            }
+
+            .product-cell {
+                font-family: 'Playfair Display', serif !important;
+                font-size: 1.6rem !important;
+                font-weight: 600 !important;
+                color: var(--text-main) !important;
+                margin-bottom: 1rem;
+                line-height: 1.2;
+                word-break: break-word;
+            }
+
+            /* Wrap source and dose visually side by side */
+            .source-cell, .dose-cell {
+                display: inline-block;
+                width: auto;
+                vertical-align: middle;
+                margin-bottom: 1.25rem;
+            }
+
+            .source-cell {
+                margin-right: 0.5rem;
+            }
+
+            .dose-cell {
+                background-color: var(--border);
+                color: var(--text-main);
+                padding: 0.25rem 0.6rem;
+                border-radius: 9999px;
+                font-size: 0.7rem;
+                font-weight: 600;
+                letter-spacing: 0.02em;
+                line-height: 1; 
             }
 
             .notes-cell {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-            }
-            
-            .notes-cell::before {
-                margin-bottom: 0.4rem;
+                margin-bottom: 1.25rem;
+                padding-bottom: 1.25rem;
+                border-bottom: 1px solid var(--border) !important;
             }
 
-            .notes-text {
-                max-width: 100%;
-                text-align: left;
-                margin-top: 0.1rem;
+            .notes-cell .notes-text {
+                font-size: 1rem !important;
+                color: var(--text-muted);
+                line-height: 1.5;
+                max-width: 100% !important;
             }
 
-            .product-name, .brand-name {
-                word-break: break-word; 
+            .price-cell {
+                font-size: 1.6rem !important;
+                font-weight: 600 !important;
+                color: var(--text-main) !important;
+                margin-bottom: 1rem;
+            }
+
+            .action-cell {
+                width: 100%;
+            }
+
+            .action-cell .buy-btn {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 1rem;
+                font-size: 1.05rem;
+                font-weight: 600;
+                background-color: var(--text-main);
+                color: var(--surface);
+                border-radius: 8px;
+            }
+
+            .action-cell .buy-btn:hover {
+                background-color: var(--accent);
+                color: var(--surface);
+                border-color: var(--accent);
             }
 
             .pricing-note {
@@ -892,13 +939,13 @@
                     : `£${item.price.toFixed(2)}`;
                 
                 row.innerHTML = `
-                    <td data-label="Brand" class="brand-name">${item.brand}</td>
-                    <td data-label="Product" class="product-name">${item.product}</td>
-                    <td data-label="Source">${getSourceTag(item.source)}</td>
-                    <td data-label="Collagen / Serving">${item.dose}</td>
-                    <td data-label="Key Benefits" class="notes-cell"><span class="notes-text">${item.notes}</span></td>
-                    <td data-label="Price" class="price-text">${displayPrice}</td>
-                    <td data-label="Action"><a href="${item.link}" target="_blank" rel="noopener noreferrer" class="buy-btn">Buy Now</a></td>
+                    <td class="brand-cell brand-name">${item.brand}</td>
+                    <td class="product-cell product-name">${item.product}</td>
+                    <td class="source-cell">${getSourceTag(item.source)}</td>
+                    <td class="dose-cell">${item.dose}</td>
+                    <td class="notes-cell"><span class="notes-text">${item.notes}</span></td>
+                    <td class="price-cell price-text">${displayPrice}</td>
+                    <td class="action-cell"><a href="${item.link}" target="_blank" rel="noopener noreferrer" class="buy-btn">Buy Now</a></td>
                 `;
                 tableBody.appendChild(row);
             });
