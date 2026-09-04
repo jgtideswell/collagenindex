@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-49Q8F65LNX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collagen Index | Compare the Best UK Collagen Supplements</title>
     <meta name="description" content="Compare the best marine and bovine collagen supplements in the UK. Filter by brand, source, dosage, and price to find the perfect collagen powder or liquid for your wellness goals.">
+    <!-- Google Fonts for a premium wellness aesthetic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -361,6 +363,10 @@
         
         .notes-text strong {
             font-weight: 500;
+            color: var(--text-main);
+        }
+        
+        .notes-text em {
             color: var(--text-main);
         }
 
@@ -720,6 +726,7 @@
     </header>
 
     <div class="dashboard-container">
+        <!-- Sidebar Filters -->
         <aside class="sidebar">
             <div class="filter-group">
                 <h3>Brand</h3>
@@ -762,13 +769,16 @@
             </div>
         </aside>
 
+        <!-- Main Content -->
         <main class="main-content">
             
+            <!-- Intro Section -->
             <section class="page-intro">
                 <h2>Find Your Perfect Collagen Match</h2>
                 <p>Navigating the UK wellness market doesn't have to be complicated. We’ve built a completely unbiased, easily searchable database so you can directly compare top marine and bovine collagen supplements side-by-side. Filter by brand, source, or price to find the exact formula that fits your routine—without the marketing noise.</p>
             </section>
 
+            <!-- Interactive Table -->
             <div class="table-container">
                 <table id="collagen-table">
                     <thead>
@@ -783,11 +793,13 @@
                         </tr>
                     </thead>
                     <tbody id="table-body">
-                        </tbody>
+                        <!-- Rows populated by JS -->
+                    </tbody>
                 </table>
             </div>
             <div class="pricing-note">* Note: All displayed prices reflect standard one-off retail purchases and do not include subscription or recurring discount pricing. Please note that prices are subject to change and may vary from the above.</div>
 
+            <!-- Education Section -->
             <section class="education-section">
                 <h2 class="education-header">Understanding Collagen: Sources & Types</h2>
                 
@@ -826,6 +838,7 @@
                 </div>
             </section>
 
+            <!-- SEO Content Section -->
             <section class="seo-section">
                 <h2>Your Guide to the Best Collagen Supplements in the UK</h2>
                 <p>Welcome to the Collagen Index, the UK's most comprehensive and transparent database for comparing daily collagen supplements. Whether you are looking for the <strong>best marine collagen for skin elasticity</strong>, premium <strong>bovine collagen peptides for joint health</strong>, or high-dose liquid formulas for anti-aging and hair growth, navigating the wellness market can be overwhelming. We cut through the marketing noise to bring you the raw data.</p>
@@ -844,6 +857,7 @@
         </main>
     </div>
 
+    <!-- Footer -->
     <footer>
         <p class="affiliate-disclosure"><strong>Affiliate Disclosure:</strong> We believe in transparency. Collagen Index is a free resource. We may earn an affiliate commission if you choose to purchase products through the links on this site, at no additional cost to you. This helps support the maintenance of our database. Please read our Methodology page to understand our unbiased listing criteria.</p>
         
@@ -855,6 +869,7 @@
         <p class="footer-copyright">&copy; 2026 Collagen Index. Designed for clarity.</p>
     </footer>
 
+    <!-- Cookie Banner -->
     <div id="cookie-banner" class="cookie-banner">
         <p class="cookie-text">We use cookies to enhance your experience, analyze site traffic, and serve tailored content. By continuing to browse the Collagen Index, you consent to our use of cookies. For more details, view our <a href="privacy-policy.html">Privacy Policy</a>.</p>
         <button id="accept-cookies" class="cookie-btn">Got it, thanks</button>
@@ -862,41 +877,41 @@
 
     <script>
         const data = [
-            { brand: "Absolute Collagen", product: "Marine Liquid Lemon", source: "Marine", dose: "8g", price: 33.99, notes: "<strong>Liquid Sachet</strong> &ndash; High-dose with Vitamin C for maximum absorption.", link: "https://amzn.to/4x5LXLX" },
-            { brand: "Absolute Collagen", product: "Marine Liquid Mango & Pineapple", source: "Marine", dose: "8g", price: 33.99, notes: "<strong>Liquid Sachet</strong> &ndash; High-dose with Vitamin C for maximum absorption.", link: "https://amzn.to/4qRjk3D" },
-            { brand: "Absolute Collagen", product: "Marine Liquid Raspberry", source: "Marine", dose: "8g", price: 33.99, notes: "<strong>Liquid Sachet</strong> &ndash; High-dose with Vitamin C for maximum absorption.", link: "https://amzn.to/4xBMDd9" },
-            { brand: "Absolute Collagen", product: "Essential Blend Collagen Powder Mango & Peach", source: "Multi", dose: "5g Bovine, 3g Marine", price: 41.98, notes: "<strong>Powder</strong> &ndash; Flavoured multi-source blend for everyday versatility.", link: "https://amzn.to/4cse9RM" },
-            { brand: "Absolute Collagen", product: "Essential Blend Collagen Powder Berry", source: "Multi", dose: "5g Bovine, 3g Marine", price: 41.98, notes: "<strong>Powder</strong> &ndash; Flavoured multi-source blend for everyday versatility.", link: "https://amzn.to/4zTHWN2" },
-            { brand: "Ancient + Brave", product: "True Collagen", source: "Bovine", dose: "5g", price: 32.0, notes: "<strong>Powder</strong> &ndash; 100% grass-fed, highly bioavailable premium peptides.", link: "https://amzn.to/45YFnf9" },
-            { brand: "Ancient + Brave", product: "Wild Collagen", source: "Marine", dose: "5g", price: 34.0, notes: "<strong>Powder</strong> &ndash; Sustainably sourced from wild-caught white fish.", link: "https://amzn.to/4gMbjZ5" },
-            { brand: "Ancient + Brave", product: "Cacao + Collagen", source: "Bovine", dose: "2g", price: 36.0, notes: "<strong>Powder</strong> &ndash; Infused with organic botanicals for a wellness boost.", link: "https://amzn.to/4wZMa3j" },
-            { brand: "Ancient + Brave", product: "Coffee + Collagen", source: "Bovine", dose: "2g", price: 36.0, notes: "<strong>Powder</strong> &ndash; Infused with organic botanicals for a wellness boost.", link: "https://amzn.to/4daXulN" },
-            { brand: "Ancient + Brave", product: "Matcha + Collagen", source: "Bovine", dose: "2g", price: 36.0, notes: "<strong>Powder</strong> &ndash; Infused with organic botanicals for a wellness boost.", link: "https://ancientandbrave.earth/" },
-            { brand: "Ancient + Brave", product: "Noble Collagen", source: "Chicken", dose: "N/A", price: 39.0, notes: "<strong>Capsule</strong> &ndash; Type II collagen for joint benefits.", link: "https://amzn.to/4qWZuEg" },
-            { brand: "Bare Biology", product: "Skinful Pure Marine Collagen", source: "Marine", dose: "5g", price: 39.95, notes: "<strong>Powder</strong> &ndash; Tasteless peptides from sustainably caught deep-sea cod.", link: "https://amzn.to/4i3K1jb" },
-            { brand: "Bare Biology", product: "Skinful Marine Collagen + Vitamin C", source: "Marine", dose: "5g", price: 45.0, notes: "<strong>Powder</strong> &ndash; Includes Vitamin C to support natural collagen formation.", link: "https://amzn.to/4gyTeio" },
-            { brand: "Bare Biology", product: "Fundamental Bovine Powder", source: "Bovine", dose: "5g", price: 29.95, notes: "<strong>Powder</strong> &ndash; Pasture-raised bovine peptides for everyday use.", link: "https://amzn.to/463qW9G" },
-            { brand: "Collagen Superdose", product: "Skin Care Liquid", source: "Marine", dose: "2.5g", price: 19.71, notes: "<strong>Liquid Bottle</strong> &ndash; Targeted formulation for specific beauty goals.", link: "https://amzn.to/4qPU4e7" },
-            { brand: "Collagen Superdose", product: "Joint Health Liquid", source: "Bovine", dose: "3g", price: 23.8, notes: "<strong>Liquid Bottle</strong> &ndash; Targeted formulation for specific beauty goals.", link: "https://amzn.to/3UvMkSw" },
-            { brand: "Collagen Superdose", product: "Hair Growth Liquid", source: "Marine", dose: "2.5g", price: 24.0, notes: "<strong>Liquid Bottle</strong> &ndash; Targeted formulation for specific beauty goals.", link: "https://amzn.to/3UyjnFo" },
-            { brand: "Correxiko", product: "Marine Collagen Powder (30 Days)", source: "Marine", dose: "10g", price: 33.95, notes: "<strong>Powder</strong> &ndash; Sourced from deep-sea, pristine wild-caught fish.", link: "https://amzn.to/4xDy098" },
-            { brand: "Correxiko", product: "Marine Collagen Capsules", source: "Marine", dose: "2.2g", price: 24.99, notes: "<strong>Capsules</strong> &ndash; Sourced from deep-sea, pristine wild-caught fish.", link: "https://amzn.to/4zQOcoT" },
-            { brand: "Dose & Co", product: "Pure Collagen Unflavoured", source: "Bovine", dose: "12g", price: 23.09, notes: "<strong>Powder</strong> &ndash; Premium dairy-free formula with no artificial sweeteners.", link: "https://amzn.to/4gJKh4F" },
-            { brand: "Dose & Co", product: "Pure Marine Collagen", source: "Marine", dose: "12g", price: 29.69, notes: "<strong>Powder</strong> &ndash; Premium dairy-free formula with no artificial sweeteners.", link: "https://amzn.to/46yxVaK" },
-            { brand: "Dose & Co", product: "Marine Collagen Beauty Elixir Powder Mango & Lychee", source: "Marine", dose: "5g", price: 19.99, notes: "<strong>Powder</strong> &ndash; Premium dairy-free formula with no artificial sweeteners.", link: "https://amzn.to/4cjWcVu" },
-            { brand: "Dose & Co", product: "Marine Collagen Beauty Elixir Powder Strawberry Lemonade", source: "Marine", dose: "5g", price: 19.99, notes: "<strong>Powder</strong> &ndash; Premium dairy-free formula with no artificial sweeteners.", link: "https://amzn.to/4yhnggu" },
-            { brand: "Dose & Co", product: "Dairy Free Collagen Creamer Vanilla", source: "Bovine", dose: "12g", price: 26.99, notes: "<strong>Powder Creamer</strong> &ndash; Premium dairy-free formula with no artificial sweeteners.", link: "https://amzn.to/4dim9VE" },
-            { brand: "Edible Health", product: "Bovine Collagen Powder", source: "Bovine", dose: "10g", price: 23.99, notes: "<strong>Powder</strong> &ndash; Clean, single-ingredient hydrolyzed peptides.", link: "https://amzn.to/3UvNJIM" },
-            { brand: "Edible Health", product: "Marine Collagen Powder", source: "Marine", dose: "10g", price: 30.72, notes: "<strong>Powder</strong> &ndash; Clean, single-ingredient hydrolyzed peptides.", link: "https://amzn.to/4yiyIbL" },
-            { brand: "Edible Health", product: "Type II Marine Capsules", source: "Marine", dose: "400mg", price: 17.99, notes: "<strong>Capsules</strong> &ndash; Clean, single-ingredient hydrolyzed peptides.", link: "https://amzn.to/3TaujbR" },
-            { brand: "Edible Health", product: "Vegan Collagen Booster", source: "Vegan", dose: "N/A", price: 20.99, notes: "<strong>Capsules</strong> &ndash; Plant-based booster to support natural collagen production.", link: "https://amzn.to/4gxce0H" },
-            { brand: "Freja Bone Broth", product: "Beef Bone Broth", source: "Bovine", dose: "3.2g", price: 35.95, notes: "<strong>Liquid Broth</strong> &ndash; Award-winning traditional bone broth from quality ingredients.", link: "https://amzn.to/3UwKVuQ" },
-            { brand: "Freja Bone Broth", product: "Chicken Bone Broth", source: "Chicken", dose: "4g", price: 29.94, notes: "<strong>Liquid Broth</strong> &ndash; Award-winning traditional bone broth from quality ingredients.", link: "https://amzn.to/3UzaRGb" },
-            { brand: "Gold Collagen", product: "Pure Gold Collagen (10 Days)", source: "Marine", dose: "5g", price: 33.25, notes: "<strong>Liquid Bottle</strong> &ndash; Pioneering liquid supplement with targeted vitamins.", link: "https://amzn.to/4xH4ob2" },
-            { brand: "Gold Collagen", product: "Forte Plus (10 Days)", source: "Marine", dose: "8g", price: 47.59, notes: "<strong>Liquid Bottle</strong> &ndash; Pioneering liquid supplement with targeted vitamins.", link: "https://amzn.to/4x5K95x" },
-            { brand: "Gold Collagen", product: "Multidose Pure Plus", source: "Marine", dose: "8g", price: 41.99, notes: "<strong>Liquid Bottle</strong> &ndash; Pioneering liquid supplement with targeted vitamins.", link: "https://amzn.to/4xBzxws" },
-            { brand: "Hunter & Gather", product: "Bovine Collagen Peptides", source: "Bovine", dose: "13g", price: 28.0, notes: "<strong>Powder</strong> &ndash; Keto & paleo-friendly, strictly grass-fed or wild-caught.", link: "https://amzn.to/4iIDs5Q" },
-            { brand: "Hunter & Gather", product: "Marine Collagen Peptides", source: "Marine", dose: "10g", price: 35.8, notes: "<strong>Powder</strong> &ndash; Keto & paleo-friendly, strictly grass-fed or wild-caught.", link: "https://amzn.to/4r0OAgz" }
+            { brand: "Absolute Collagen", product: "Marine Liquid Lemon", source: "Marine", dose: "8g", price: 33.99, notes: "<strong>Liquid Sachet</strong> &ndash; High-dose with Vitamin C for maximum absorption.<br><br>⭐ <em>Reviewer Consensus:</em> Users frequently report glowing skin and thicker hair within weeks, though some find the zesty lemon flavour quite strong.", link: "https://amzn.to/4x5LXLX" },
+            { brand: "Absolute Collagen", product: "Marine Liquid Mango & Pineapple", source: "Marine", dose: "8g", price: 33.99, notes: "<strong>Liquid Sachet</strong> &ndash; High-dose with Vitamin C for maximum absorption.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers love the tropical taste of this variant, noting visible improvements in skin hydration and nail strength.", link: "https://amzn.to/4qRjk3D" },
+            { brand: "Absolute Collagen", product: "Marine Liquid Raspberry", source: "Marine", dose: "8g", price: 33.99, notes: "<strong>Liquid Sachet</strong> &ndash; High-dose with Vitamin C for maximum absorption.<br><br>⭐ <em>Reviewer Consensus:</em> A popular choice for its sweet berry taste; customers regularly mention a noticeable difference in fine lines after consistent use.", link: "https://amzn.to/4xBMDd9" },
+            { brand: "Absolute Collagen", product: "Essential Blend Collagen Powder Mango & Peach", source: "Multi", dose: "5g Bovine, 3g Marine", price: 41.98, notes: "<strong>Powder</strong> &ndash; Flavoured multi-source blend for everyday versatility.<br><br>⭐ <em>Reviewer Consensus:</em> Fans appreciate the pleasant tropical flavour and easy mixing, noting improvements in joint comfort and overall skin glow.", link: "https://amzn.to/4cse9RM" },
+            { brand: "Absolute Collagen", product: "Essential Blend Collagen Powder Berry", source: "Multi", dose: "5g Bovine, 3g Marine", price: 41.98, notes: "<strong>Powder</strong> &ndash; Flavoured multi-source blend for everyday versatility.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers highlight the delicious fruity taste when added to water, consistently reporting stronger nails and reduced joint clicking.", link: "https://amzn.to/4zTHWN2" },
+            { brand: "Ancient + Brave", product: "True Collagen", source: "Bovine", dose: "5g", price: 32.0, notes: "<strong>Powder</strong> &ndash; 100% grass-fed, highly bioavailable premium peptides.<br><br>⭐ <em>Reviewer Consensus:</em> Highly praised for being completely tasteless and dissolving effortlessly in hot drinks; users frequently report stronger nails and better gut health.", link: "https://amzn.to/45YFnf9" },
+            { brand: "Ancient + Brave", product: "Wild Collagen", source: "Marine", dose: "5g", price: 34.0, notes: "<strong>Powder</strong> &ndash; Sustainably sourced from wild-caught white fish.<br><br>⭐ <em>Reviewer Consensus:</em> Often commended for its lack of fishy aftertaste, with many customers seeing rapid improvements in skin elasticity and fine lines.", link: "https://amzn.to/4gMbjZ5" },
+            { brand: "Ancient + Brave", product: "Cacao + Collagen", source: "Bovine", dose: "2g", price: 36.0, notes: "<strong>Powder</strong> &ndash; Infused with organic botanicals for a wellness boost.<br><br>⭐ <em>Reviewer Consensus:</em> Users adore the rich chocolate taste as a morning ritual, though some note the actual collagen dose per serving is lower than unflavoured powders.", link: "https://amzn.to/4wZMa3j" },
+            { brand: "Ancient + Brave", product: "Coffee + Collagen", source: "Bovine", dose: "2g", price: 36.0, notes: "<strong>Powder</strong> &ndash; Infused with organic botanicals for a wellness boost.<br><br>⭐ <em>Reviewer Consensus:</em> A hit among busy professionals for combining caffeine and collagen, regularly praised for boosting morning energy and skin radiance.", link: "https://amzn.to/4daXulN" },
+            { brand: "Ancient + Brave", product: "Matcha + Collagen", source: "Bovine", dose: "2g", price: 36.0, notes: "<strong>Powder</strong> &ndash; Infused with organic botanicals for a wellness boost.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers love the earthy green tea flavour and antioxidant boost, calling it a perfect afternoon pick-me-up for wellness.", link: "https://ancientandbrave.earth/" },
+            { brand: "Ancient + Brave", product: "Noble Collagen", source: "Chicken", dose: "N/A", price: 39.0, notes: "<strong>Capsule</strong> &ndash; Type II collagen for joint benefits.<br><br>⭐ <em>Reviewer Consensus:</em> Often praised by users specifically seeking joint relief, with many reporting reduced stiffness after consistent use.", link: "https://amzn.to/4qWZuEg" },
+            { brand: "Bare Biology", product: "Skinful Pure Marine Collagen", source: "Marine", dose: "5g", price: 39.95, notes: "<strong>Powder</strong> &ndash; Tasteless peptides from sustainably caught deep-sea cod.<br><br>⭐ <em>Reviewer Consensus:</em> Consistently rated as truly flavourless and fine-textured; reviewers frequently highlight noticeable reductions in fine lines and stronger hair.", link: "https://amzn.to/4i3K1jb" },
+            { brand: "Bare Biology", product: "Skinful Marine Collagen + Vitamin C", source: "Marine", dose: "5g", price: 45.0, notes: "<strong>Powder</strong> &ndash; Includes Vitamin C to support natural collagen formation.<br><br>⭐ <em>Reviewer Consensus:</em> Customers appreciate the added Vitamin C for enhanced absorption, often noting brighter skin tones within the first month of use.", link: "https://amzn.to/4gyTeio" },
+            { brand: "Bare Biology", product: "Fundamental Bovine Powder", source: "Bovine", dose: "5g", price: 29.95, notes: "<strong>Powder</strong> &ndash; Pasture-raised bovine peptides for everyday use.<br><br>⭐ <em>Reviewer Consensus:</em> Users note excellent value and smooth blending in coffee, with many praising its benefits for post-workout recovery.", link: "https://amzn.to/463qW9G" },
+            { brand: "Collagen Superdose", product: "Skin Care Liquid", source: "Marine", dose: "2.5g", price: 19.71, notes: "<strong>Liquid Bottle</strong> &ndash; Targeted formulation for specific beauty goals.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers find the liquid format highly convenient for fast absorption, specifically noting plumper skin, though a few mention it is quite sweet.", link: "https://amzn.to/4qPU4e7" },
+            { brand: "Collagen Superdose", product: "Joint Health Liquid", source: "Bovine", dose: "3g", price: 23.8, notes: "<strong>Liquid Bottle</strong> &ndash; Targeted formulation for specific beauty goals.<br><br>⭐ <em>Reviewer Consensus:</em> Highly rated for easing morning stiffness and joint pain, with many users preferring the pre-mixed liquid over messy powders.", link: "https://amzn.to/3UvMkSw" },
+            { brand: "Collagen Superdose", product: "Hair Growth Liquid", source: "Marine", dose: "2.5g", price: 24.0, notes: "<strong>Liquid Bottle</strong> &ndash; Targeted formulation for specific beauty goals.<br><br>⭐ <em>Reviewer Consensus:</em> Customers frequently report reduced hair shedding and new growth around the hairline after completing a 30-day course.", link: "https://amzn.to/3UyjnFo" },
+            { brand: "Correxiko", product: "Marine Collagen Powder (30 Days)", source: "Marine", dose: "10g", price: 33.95, notes: "<strong>Powder</strong> &ndash; Sourced from deep-sea, pristine wild-caught fish.<br><br>⭐ <em>Reviewer Consensus:</em> Highly rated for its pristine sourcing and lack of fishy aftertaste; users frequently report significant hair growth.", link: "https://amzn.to/4xDy098" },
+            { brand: "Correxiko", product: "Marine Collagen Capsules", source: "Marine", dose: "2.2g", price: 24.99, notes: "<strong>Capsules</strong> &ndash; Sourced from deep-sea, pristine wild-caught fish.<br><br>⭐ <em>Reviewer Consensus:</em> Loved for the convenience of travel, though some users note you must take several daily to match powder doses.", link: "https://amzn.to/4zQOcoT" },
+            { brand: "Dose & Co", product: "Pure Collagen Unflavoured", source: "Bovine", dose: "12g", price: 23.09, notes: "<strong>Powder</strong> &ndash; Premium dairy-free formula with no artificial sweeteners.<br><br>⭐ <em>Reviewer Consensus:</em> Widely praised for great affordability and seamless blending into coffees, with many noticing improved hair thickness.", link: "https://amzn.to/4gJKh4F" },
+            { brand: "Dose & Co", product: "Pure Marine Collagen", source: "Marine", dose: "12g", price: 29.69, notes: "<strong>Powder</strong> &ndash; Premium dairy-free formula with no artificial sweeteners.<br><br>⭐ <em>Reviewer Consensus:</em> Customers rate this highly for its clean marine sourcing, frequently mentioning significant boosts in skin hydration and plumpness.", link: "https://amzn.to/46yxVaK" },
+            { brand: "Dose & Co", product: "Marine Collagen Beauty Elixir Powder Mango & Lychee", source: "Marine", dose: "5g", price: 19.99, notes: "<strong>Powder</strong> &ndash; Premium dairy-free formula with no artificial sweeteners.<br><br>⭐ <em>Reviewer Consensus:</em> A favorite for cold water and smoothies; reviewers love the refreshing taste and report stronger, faster-growing nails.", link: "https://amzn.to/4cjWcVu" },
+            { brand: "Dose & Co", product: "Marine Collagen Beauty Elixir Powder Strawberry Lemonade", source: "Marine", dose: "5g", price: 19.99, notes: "<strong>Powder</strong> &ndash; Premium dairy-free formula with no artificial sweeteners.<br><br>⭐ <em>Reviewer Consensus:</em> Highly rated for its summery flavour profile, making daily collagen intake feel like a treat rather than a chore.", link: "https://amzn.to/4yhnggu" },
+            { brand: "Dose & Co", product: "Dairy Free Collagen Creamer Vanilla", source: "Bovine", dose: "12g", price: 26.99, notes: "<strong>Powder Creamer</strong> &ndash; Premium dairy-free formula with no artificial sweeteners.<br><br>⭐ <em>Reviewer Consensus:</em> Fans love using this as a dairy-free coffee addition, though some note it requires vigorous stirring to prevent clumping.", link: "https://amzn.to/4dim9VE" },
+            { brand: "Edible Health", product: "Bovine Collagen Powder", source: "Bovine", dose: "10g", price: 23.99, notes: "<strong>Powder</strong> &ndash; Clean, single-ingredient hydrolyzed peptides.<br><br>⭐ <em>Reviewer Consensus:</em> Extremely popular for offering large tubs at a great price point; users consistently report positive effects on joints and gut digestion.", link: "https://amzn.to/3UvNJIM" },
+            { brand: "Edible Health", product: "Marine Collagen Powder", source: "Marine", dose: "10g", price: 30.72, notes: "<strong>Powder</strong> &ndash; Clean, single-ingredient hydrolyzed peptides.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers frequently commend the value for money compared to sachet brands, noting excellent results for skin elasticity and hair volume.", link: "https://amzn.to/4yiyIbL" },
+            { brand: "Edible Health", product: "Type II Marine Capsules", source: "Marine", dose: "400mg", price: 17.99, notes: "<strong>Capsules</strong> &ndash; Clean, single-ingredient hydrolyzed peptides.<br><br>⭐ <em>Reviewer Consensus:</em> Often chosen specifically for targeted joint support, with many customers experiencing reduced knee and hip pain after a few weeks.", link: "https://amzn.to/3TaujbR" },
+            { brand: "Edible Health", product: "Vegan Collagen Booster", source: "Vegan", dose: "N/A", price: 20.99, notes: "<strong>Capsules</strong> &ndash; Plant-based booster to support natural collagen production.<br><br>⭐ <em>Reviewer Consensus:</em> Plant-based users appreciate the comprehensive amino acid profile, reporting brighter skin without needing animal-derived products.", link: "https://amzn.to/4gxce0H" },
+            { brand: "Freja Bone Broth", product: "Beef Bone Broth", source: "Bovine", dose: "3.2g", price: 35.95, notes: "<strong>Liquid Broth</strong> &ndash; Award-winning traditional bone broth from quality ingredients.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers rave about the rich, comforting savory taste and gut-healing benefits, acting as a great alternative to sweet supplements.", link: "https://amzn.to/3UwKVuQ" },
+            { brand: "Freja Bone Broth", product: "Chicken Bone Broth", source: "Chicken", dose: "4g", price: 29.94, notes: "<strong>Liquid Broth</strong> &ndash; Award-winning traditional bone broth from quality ingredients.<br><br>⭐ <em>Reviewer Consensus:</em> Highly praised as a nourishing, warming base for soups or sipping, with many noting improvements in digestion and joint comfort.", link: "https://amzn.to/3UzaRGb" },
+            { brand: "Gold Collagen", product: "Pure Gold Collagen (10 Days)", source: "Marine", dose: "5g", price: 33.25, notes: "<strong>Liquid Bottle</strong> &ndash; Pioneering liquid supplement with targeted vitamins.<br><br>⭐ <em>Reviewer Consensus:</em> Regarded as a premium beauty treatment with rapid skin hydration results, but frequently cited as expensive for continuous daily use.", link: "https://amzn.to/4xH4ob2" },
+            { brand: "Gold Collagen", product: "Forte Plus (10 Days)", source: "Marine", dose: "8g", price: 47.59, notes: "<strong>Liquid Bottle</strong> &ndash; Pioneering liquid supplement with targeted vitamins.<br><br>⭐ <em>Reviewer Consensus:</em> Often purchased by older demographics for its fortified vitamin profile, with reviews highlighting significant improvements in deeper wrinkles.", link: "https://amzn.to/4x5K95x" },
+            { brand: "Gold Collagen", product: "Multidose Pure Plus", source: "Marine", dose: "8g", price: 41.99, notes: "<strong>Liquid Bottle</strong> &ndash; Pioneering liquid supplement with targeted vitamins.<br><br>⭐ <em>Reviewer Consensus:</em> Customers appreciate the large bottle format as a more eco-friendly and slightly more economical way to consume this premium formula.", link: "https://amzn.to/4xBzxws" },
+            { brand: "Hunter & Gather", product: "Bovine Collagen Peptides", source: "Bovine", dose: "13g", price: 28.0, notes: "<strong>Powder</strong> &ndash; Keto & paleo-friendly, strictly grass-fed or wild-caught.<br><br>⭐ <em>Reviewer Consensus:</em> Keto fans highly rate the clean, filler-free ingredients; the unflavoured peptides are repeatedly praised for dissolving invisibly into coffee.", link: "https://amzn.to/4iIDs5Q" },
+            { brand: "Hunter & Gather", product: "Marine Collagen Peptides", source: "Marine", dose: "10g", price: 35.8, notes: "<strong>Powder</strong> &ndash; Keto & paleo-friendly, strictly grass-fed or wild-caught.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers specifically highlight the pristine wild-caught sourcing, noting excellent mixability and positive changes to skin texture.", link: "https://amzn.to/4r0OAgz" }
         ];
 
         const tableBody = document.getElementById('table-body');
