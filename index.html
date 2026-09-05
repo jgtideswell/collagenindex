@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-49Q8F65LNX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collagen Index | Compare the Best UK Collagen Supplements</title>
     <meta name="description" content="Compare the best marine and bovine collagen supplements in the UK. Filter by brand, source, dosage, and price to find the perfect collagen powder or liquid for your wellness goals.">
+    <!-- Google Fonts for a premium wellness aesthetic -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -281,17 +283,18 @@
             text-align: right;
         }
 
-        /* Fully dynamic table to prevent horizontal scroll on smaller laptops */
+        /* Fully dynamic table */
         table {
             width: 100%;
             border-collapse: collapse;
             text-align: left;
+            table-layout: auto;
         }
 
         th, td {
             padding: 0.85rem 1rem;
             border-bottom: 1px solid var(--border);
-            vertical-align: middle;
+            vertical-align: top;
         }
 
         th {
@@ -302,6 +305,7 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
             border-bottom: 2px solid var(--border);
+            vertical-align: middle;
         }
 
         tr:last-child td {
@@ -312,18 +316,44 @@
             background-color: #FCFAF8;
         }
 
+        /* Fixed Column Widths for Desktop */
+        @media (min-width: 769px) {
+            th.col-product, td.combined-product-cell { width: 25%; padding-right: 1.5rem; }
+            th.col-specs, td.combined-specs-cell { width: 12%; padding-right: 1.5rem; }
+            th.col-benefits, td.notes-cell { width: 45%; padding-right: 1.5rem; }
+            th.col-price, td.price-cell { width: 8%; white-space: nowrap; }
+            th.col-action, td.action-cell { width: 10%; text-align: right; }
+        }
+
+        /* Consolidated Product Cell */
         .brand-name {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
             font-weight: 600;
-            font-size: 1.05rem;
-            color: var(--text-main);
+            margin-bottom: 0.25rem;
         }
 
         .product-name {
-            font-weight: 300;
-            font-size: 0.95rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--text-main);
+            line-height: 1.2;
         }
 
+        /* Consolidated Specs Cell */
+        .spec-item {
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+        .spec-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Tags */
         .tag {
             display: inline-block;
             padding: 0.25rem 0.6rem;
@@ -345,6 +375,7 @@
             font-weight: 500;
             color: var(--text-main);
             font-size: 0.95rem;
+            padding-top: 0.25rem; /* Aligns visually with the product name */
         }
         
         .price-pending {
@@ -604,37 +635,35 @@
                 display: block;
             }
 
-            /* E-commerce specific cell styling */
-            .brand-cell {
-                font-family: 'Outfit', sans-serif !important;
-                font-size: 0.85rem !important;
-                text-transform: uppercase;
-                letter-spacing: 0.05em;
-                color: var(--text-muted) !important;
-                font-weight: 600 !important;
-                margin-bottom: 0.25rem;
+            /* Clear the ::before labels completely so they don't mess up the tile */
+            td::before {
+                display: none !important;
             }
 
-            .product-cell {
-                font-family: 'Playfair Display', serif !important;
-                font-size: 1.6rem !important;
-                font-weight: 600 !important;
-                color: var(--text-main) !important;
+            /* E-commerce specific cell styling */
+            .combined-product-cell {
                 margin-bottom: 1rem;
-                line-height: 1.2;
+            }
+
+            .combined-product-cell .brand-name {
+                font-size: 0.85rem;
+            }
+
+            .combined-product-cell .product-name {
+                font-size: 1.6rem;
                 word-break: break-word;
             }
 
             /* Wrap source and dose visually side by side */
-            .source-cell, .dose-cell {
-                display: inline-block;
-                width: auto;
-                vertical-align: middle;
+            .combined-specs-cell {
                 margin-bottom: 1.25rem;
             }
 
-            .source-cell {
+            .combined-specs-cell .spec-item {
+                display: inline-block;
+                margin-bottom: 0;
                 margin-right: 0.5rem;
+                vertical-align: middle;
             }
 
             .notes-cell {
@@ -717,21 +746,127 @@
     </header>
 
     <div class="dashboard-container">
+        <!-- Sidebar Filters -->
         <aside class="sidebar">
             <div class="filter-group">
                 <h3>Brand</h3>
                 <select id="brand-filter">
                     <option value="all">All Brands</option>
+                    <option value="APE Nutrition">APE Nutrition</option>
+                    <option value="AG1">AG1</option>
                     <option value="Absolute Collagen">Absolute Collagen</option>
+                    <option value="ActivGums">ActivGums</option>
+                    <option value="Active Edge">Active Edge</option>
+                    <option value="Alpha01">Alpha01</option>
                     <option value="Ancient + Brave">Ancient + Brave</option>
+                    <option value="Applied Nutrition">Applied Nutrition</option>
                     <option value="Bare Biology">Bare Biology</option>
-                    <option value="Collagen Superdose">Collagen Superdose</option>
-                    <option value="Correxiko">Correxiko</option>
+                    <option value="Beauty Pie">Beauty Pie</option>
+                    <option value="Bettervits">Bettervits</option>
+                    <option value="BioAscend">BioAscend</option>
+                    <option value="Bioglan">Bioglan</option>
+                    <option value="Bulk">Bulk</option>
+                    <option value="Bute Island Foods">Bute Island Foods</option>
+                    <option value="CARLTON">CARLTON</option>
+                    <option value="CORREXIKO">CORREXIKO</option>
+                    <option value="California Gold Nutrition">California Gold Nutrition</option>
+                    <option value="CanPrev">CanPrev</option>
+                    <option value="Carlyle">Carlyle</option>
+                    <option value="Clinisupps">Clinisupps</option>
                     <option value="Dose & Co">Dose & Co</option>
-                    <option value="Edible Health">Edible Health</option>
+                    <option value="Dr. Axe">Dr. Axe</option>
+                    <option value="Dr. Mercola">Dr. Mercola</option>
+                    <option value="Earths Design">Earths Design</option>
+                    <option value="Elevate Supplements">Elevate Supplements</option>
+                    <option value="EneriWell">EneriWell</option>
+                    <option value="Forest & Shore">Forest & Shore</option>
+                    <option value="Free Soul">Free Soul</option>
                     <option value="Freja Bone Broth">Freja Bone Broth</option>
-                    <option value="Gold Collagen">Gold Collagen</option>
+                    <option value="GMOLARSUSCO">GMOLARSUSCO</option>
+                    <option value="Garden of Life">Garden of Life</option>
+                    <option value="HealthEssent">HealthEssent</option>
+                    <option value="Healthspan">Healthspan</option>
+                    <option value="Higher Nature">Higher Nature</option>
+                    <option value="Horbaach">Horbaach</option>
+                    <option value="Horbäach">Horbäach</option>
                     <option value="Hunter & Gather">Hunter & Gather</option>
+                    <option value="Incite Nutrition">Incite Nutrition</option>
+                    <option value="Ingenious">Ingenious</option>
+                    <option value="Inspiriko">Inspiriko</option>
+                    <option value="Izkan">Izkan</option>
+                    <option value="Jarrow Formulas">Jarrow Formulas</option>
+                    <option value="JeaKen">JeaKen</option>
+                    <option value="Known Nutrition UK">Known Nutrition UK</option>
+                    <option value="LLS">LLS</option>
+                    <option value="Life Extension">Life Extension</option>
+                    <option value="Lindens">Lindens</option>
+                    <option value="MAV Nutrition">MAV Nutrition</option>
+                    <option value="MOBU">MOBU</option>
+                    <option value="Myvitamins">Myvitamins</option>
+                    <option value="N2 Natural Nutrition">N2 Natural Nutrition</option>
+                    <option value="Natures Aid">Natures Aid</option>
+                    <option value="Natures Bounty">Natures Bounty</option>
+                    <option value="Natures Cure">Natures Cure</option>
+                    <option value="Natures Plus">Natures Plus</option>
+                    <option value="NeoCell">NeoCell</option>
+                    <option value="New Leaf">New Leaf</option>
+                    <option value="New Leaf Products">New Leaf Products</option>
+                    <option value="New Nordic">New Nordic</option>
+                    <option value="Novomins">Novomins</option>
+                    <option value="Now Foods">Now Foods</option>
+                    <option value="Nu U Nutrition">Nu U Nutrition</option>
+                    <option value="Nutri Advanced">Nutri Advanced</option>
+                    <option value="Nutrabytes">Nutrabytes</option>
+                    <option value="Nutrality">Nutrality</option>
+                    <option value="Nutravita">Nutravita</option>
+                    <option value="Nutriburst">Nutriburst</option>
+                    <option value="NutriVolv">NutriVolv</option>
+                    <option value="Nutrian">Nutrian</option>
+                    <option value="NutriZing">NutriZing</option>
+                    <option value="Omnia">Omnia</option>
+                    <option value="Optimum Nutrition">Optimum Nutrition</option>
+                    <option value="Orgain">Orgain</option>
+                    <option value="Oskia">Oskia</option>
+                    <option value="Oxford Origins">Oxford Origins</option>
+                    <option value="Peak Supps">Peak Supps</option>
+                    <option value="Planet Paleo">Planet Paleo</option>
+                    <option value="Pretty Smart Food">Pretty Smart Food</option>
+                    <option value="Prowise Healthcare">Prowise Healthcare</option>
+                    <option value="Pura Collagen">Pura Collagen</option>
+                    <option value="Pure Collagen Co.">Pure Collagen Co.</option>
+                    <option value="Reverse Life">Reverse Life</option>
+                    <option value="Revive Collagen">Revive Collagen</option>
+                    <option value="Revive Naturals">Revive Naturals</option>
+                    <option value="Rude Health">Rude Health</option>
+                    <option value="SS Sport">SS Sport</option>
+                    <option value="Seagarden">Seagarden</option>
+                    <option value="Seven Seas">Seven Seas</option>
+                    <option value="Simply Supplements">Simply Supplements</option>
+                    <option value="So Body Co">So Body Co</option>
+                    <option value="Solgar">Solgar</option>
+                    <option value="Sports Research">Sports Research</option>
+                    <option value="Star Nutra">Star Nutra</option>
+                    <option value="StarPowa UK">StarPowa UK</option>
+                    <option value="Sunna Supplements">Sunna Supplements</option>
+                    <option value="SuperSelf">SuperSelf</option>
+                    <option value="Swedish Nutra">Swedish Nutra</option>
+                    <option value="The Intelligent Health">The Intelligent Health</option>
+                    <option value="Tonic X">Tonic X</option>
+                    <option value="Trace Minerals">Trace Minerals</option>
+                    <option value="Troo Health Care">Troo Health Care</option>
+                    <option value="Vida Glow">Vida Glow</option>
+                    <option value="VitaBright">VitaBright</option>
+                    <option value="Vitabiotics">Vitabiotics</option>
+                    <option value="Vital Proteins">Vital Proteins</option>
+                    <option value="WFN">WFN</option>
+                    <option value="Weider">Weider</option>
+                    <option value="WeightWorld">WeightWorld</option>
+                    <option value="WeightWorld UK">WeightWorld UK</option>
+                    <option value="Well & Wild">Well & Wild</option>
+                    <option value="Wellgard">Wellgard</option>
+                    <option value="Youtheory">Youtheory</option>
+                    <option value="Zipvit">Zipvit</option>
+                    <option value="Zooki">Zooki</option>
                 </select>
             </div>
 
@@ -759,32 +894,35 @@
             </div>
         </aside>
 
+        <!-- Main Content -->
         <main class="main-content">
             
+            <!-- Intro Section -->
             <section class="page-intro">
                 <h2>Find Your Perfect Collagen Match</h2>
                 <p>Navigating the UK wellness market doesn't have to be complicated. We’ve built a completely unbiased, easily searchable database so you can directly compare top marine and bovine collagen supplements side-by-side. Filter by brand, source, or price to find the exact formula that fits your routine—without the marketing noise.</p>
             </section>
 
+            <!-- Interactive Table -->
             <div class="table-container">
                 <table id="collagen-table">
                     <thead>
                         <tr>
-                            <th>Brand</th>
-                            <th>Product</th>
-                            <th>Source</th>
-                            <th>Collagen / Serving</th>
-                            <th>Key Benefits</th>
-                            <th>Price</th>
-                            <th>Action</th>
+                            <th class="col-product">Product</th>
+                            <th class="col-specs">Specs</th>
+                            <th class="col-benefits">Key Benefits</th>
+                            <th class="col-price">Price</th>
+                            <th class="col-action">Action</th>
                         </tr>
                     </thead>
                     <tbody id="table-body">
-                        </tbody>
+                        <!-- Rows populated by JS -->
+                    </tbody>
                 </table>
             </div>
             <div class="pricing-note">* Note: All displayed prices reflect standard one-off retail purchases and do not include subscription or recurring discount pricing. Please note that prices are subject to change and may vary from the above.</div>
 
+            <!-- Education Section -->
             <section class="education-section">
                 <h2 class="education-header">Understanding Collagen: Sources & Types</h2>
                 
@@ -823,6 +961,7 @@
                 </div>
             </section>
 
+            <!-- SEO Content Section -->
             <section class="seo-section">
                 <h2>Your Guide to the Best Collagen Supplements in the UK</h2>
                 <p>Welcome to the Collagen Index, the UK's most comprehensive and transparent database for comparing daily collagen supplements. Whether you are looking for the <strong>best marine collagen for skin elasticity</strong>, premium <strong>bovine collagen peptides for joint health</strong>, or high-dose liquid formulas for anti-aging and hair growth, navigating the wellness market can be overwhelming. We cut through the marketing noise to bring you the raw data.</p>
@@ -841,6 +980,7 @@
         </main>
     </div>
 
+    <!-- Footer -->
     <footer>
         <p class="affiliate-disclosure"><strong>Affiliate Disclosure:</strong> We believe in transparency. Collagen Index is a free resource. We may earn an affiliate commission if you choose to purchase products through the links on this site, at no additional cost to you. This helps support the maintenance of our database. Please read our Methodology page to understand our unbiased listing criteria.</p>
         
@@ -852,49 +992,115 @@
         <p class="footer-copyright">&copy; 2026 Collagen Index. Designed for clarity.</p>
     </footer>
 
+    <!-- Cookie Banner -->
     <div id="cookie-banner" class="cookie-banner">
         <p class="cookie-text">We use cookies to enhance your experience, analyze site traffic, and serve tailored content. By continuing to browse the Collagen Index, you consent to our use of cookies. For more details, view our <a href="privacy-policy.html">Privacy Policy</a>.</p>
         <button id="accept-cookies" class="cookie-btn">Got it, thanks</button>
     </div>
 
     <script>
-        const data = [
-            { brand: "Absolute Collagen", product: "Marine Liquid Lemon", source: "Marine", dose: "8g", price: 33.99, notes: "<strong>Liquid Sachet</strong> &ndash; High-dose with Vitamin C for maximum absorption.<br><br>⭐ <em>Reviewer Consensus:</em> Users frequently report glowing skin and thicker hair within weeks, though some find the zesty lemon flavour quite strong.", link: "https://amzn.to/4x5LXLX" },
-            { brand: "Absolute Collagen", product: "Marine Liquid Mango & Pineapple", source: "Marine", dose: "8g", price: 33.99, notes: "<strong>Liquid Sachet</strong> &ndash; High-dose with Vitamin C for maximum absorption.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers love the tropical taste of this variant, noting visible improvements in skin hydration and nail strength.", link: "https://amzn.to/4qRjk3D" },
-            { brand: "Absolute Collagen", product: "Marine Liquid Raspberry", source: "Marine", dose: "8g", price: 33.99, notes: "<strong>Liquid Sachet</strong> &ndash; High-dose with Vitamin C for maximum absorption.<br><br>⭐ <em>Reviewer Consensus:</em> A popular choice for its sweet berry taste; customers regularly mention a noticeable difference in fine lines after consistent use.", link: "https://amzn.to/4xBMDd9" },
-            { brand: "Absolute Collagen", product: "Essential Blend Collagen Powder Mango & Peach", source: "Multi", dose: "5g Bovine, 3g Marine", price: 41.98, notes: "<strong>Powder</strong> &ndash; Flavoured multi-source blend for everyday versatility.<br><br>⭐ <em>Reviewer Consensus:</em> Fans appreciate the pleasant tropical flavour and easy mixing, noting improvements in joint comfort and overall skin glow.", link: "https://amzn.to/4cse9RM" },
-            { brand: "Absolute Collagen", product: "Essential Blend Collagen Powder Berry", source: "Multi", dose: "5g Bovine, 3g Marine", price: 41.98, notes: "<strong>Powder</strong> &ndash; Flavoured multi-source blend for everyday versatility.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers highlight the delicious fruity taste when added to water, consistently reporting stronger nails and reduced joint clicking.", link: "https://amzn.to/4zTHWN2" },
-            { brand: "Ancient + Brave", product: "True Collagen", source: "Bovine", dose: "5g", price: 32.0, notes: "<strong>Powder</strong> &ndash; 100% grass-fed, highly bioavailable premium peptides.<br><br>⭐ <em>Reviewer Consensus:</em> Highly praised for being completely tasteless and dissolving effortlessly in hot drinks; users frequently report stronger nails and better gut health.", link: "https://amzn.to/45YFnf9" },
-            { brand: "Ancient + Brave", product: "Wild Collagen", source: "Marine", dose: "5g", price: 34.0, notes: "<strong>Powder</strong> &ndash; Sustainably sourced from wild-caught white fish.<br><br>⭐ <em>Reviewer Consensus:</em> Often commended for its lack of fishy aftertaste, with many customers seeing rapid improvements in skin elasticity and fine lines.", link: "https://amzn.to/4gMbjZ5" },
-            { brand: "Ancient + Brave", product: "Cacao + Collagen", source: "Bovine", dose: "2g", price: 36.0, notes: "<strong>Powder</strong> &ndash; Infused with organic botanicals for a wellness boost.<br><br>⭐ <em>Reviewer Consensus:</em> Users adore the rich chocolate taste as a morning ritual, though some note the actual collagen dose per serving is lower than unflavoured powders.", link: "https://amzn.to/4wZMa3j" },
-            { brand: "Ancient + Brave", product: "Coffee + Collagen", source: "Bovine", dose: "2g", price: 36.0, notes: "<strong>Powder</strong> &ndash; Infused with organic botanicals for a wellness boost.<br><br>⭐ <em>Reviewer Consensus:</em> A hit among busy professionals for combining caffeine and collagen, regularly praised for boosting morning energy and skin radiance.", link: "https://amzn.to/4daXulN" },
-            { brand: "Ancient + Brave", product: "Matcha + Collagen", source: "Bovine", dose: "2g", price: 36.0, notes: "<strong>Powder</strong> &ndash; Infused with organic botanicals for a wellness boost.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers love the earthy green tea flavour and antioxidant boost, calling it a perfect afternoon pick-me-up for wellness.", link: "https://ancientandbrave.earth/" },
-            { brand: "Ancient + Brave", product: "Noble Collagen", source: "Chicken", dose: "N/A", price: 39.0, notes: "<strong>Capsule</strong> &ndash; Type II collagen for joint benefits.<br><br>⭐ <em>Reviewer Consensus:</em> Often praised by users specifically seeking joint relief, with many reporting reduced stiffness after consistent use.", link: "https://amzn.to/4qWZuEg" },
-            { brand: "Bare Biology", product: "Skinful Pure Marine Collagen", source: "Marine", dose: "5g", price: 39.95, notes: "<strong>Powder</strong> &ndash; Tasteless peptides from sustainably caught deep-sea cod.<br><br>⭐ <em>Reviewer Consensus:</em> Consistently rated as truly flavourless and fine-textured; reviewers frequently highlight noticeable reductions in fine lines and stronger hair.", link: "https://amzn.to/4i3K1jb" },
-            { brand: "Bare Biology", product: "Skinful Marine Collagen + Vitamin C", source: "Marine", dose: "5g", price: 45.0, notes: "<strong>Powder</strong> &ndash; Includes Vitamin C to support natural collagen formation.<br><br>⭐ <em>Reviewer Consensus:</em> Customers appreciate the added Vitamin C for enhanced absorption, often noting brighter skin tones within the first month of use.", link: "https://amzn.to/4gyTeio" },
-            { brand: "Bare Biology", product: "Fundamental Bovine Powder", source: "Bovine", dose: "5g", price: 29.95, notes: "<strong>Powder</strong> &ndash; Pasture-raised bovine peptides for everyday use.<br><br>⭐ <em>Reviewer Consensus:</em> Users note excellent value and smooth blending in coffee, with many praising its benefits for post-workout recovery.", link: "https://amzn.to/463qW9G" },
-            { brand: "Collagen Superdose", product: "Skin Care Liquid", source: "Marine", dose: "2.5g", price: 19.71, notes: "<strong>Liquid Bottle</strong> &ndash; Targeted formulation for specific beauty goals.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers find the liquid format highly convenient for fast absorption, specifically noting plumper skin, though a few mention it is quite sweet.", link: "https://amzn.to/4qPU4e7" },
-            { brand: "Collagen Superdose", product: "Joint Health Liquid", source: "Bovine", dose: "3g", price: 23.8, notes: "<strong>Liquid Bottle</strong> &ndash; Targeted formulation for specific beauty goals.<br><br>⭐ <em>Reviewer Consensus:</em> Highly rated for easing morning stiffness and joint pain, with many users preferring the pre-mixed liquid over messy powders.", link: "https://amzn.to/3UvMkSw" },
-            { brand: "Collagen Superdose", product: "Hair Growth Liquid", source: "Marine", dose: "2.5g", price: 24.0, notes: "<strong>Liquid Bottle</strong> &ndash; Targeted formulation for specific beauty goals.<br><br>⭐ <em>Reviewer Consensus:</em> Customers frequently report reduced hair shedding and new growth around the hairline after completing a 30-day course.", link: "https://amzn.to/3UyjnFo" },
-            { brand: "Correxiko", product: "Marine Collagen Powder (30 Days)", source: "Marine", dose: "10g", price: 33.95, notes: "<strong>Powder</strong> &ndash; Sourced from deep-sea, pristine wild-caught fish.<br><br>⭐ <em>Reviewer Consensus:</em> Highly rated for its pristine sourcing and lack of fishy aftertaste; users frequently report significant hair growth.", link: "https://amzn.to/4xDy098" },
-            { brand: "Correxiko", product: "Marine Collagen Capsules", source: "Marine", dose: "2.2g", price: 24.99, notes: "<strong>Capsules</strong> &ndash; Sourced from deep-sea, pristine wild-caught fish.<br><br>⭐ <em>Reviewer Consensus:</em> Loved for the convenience of travel, though some users note you must take several daily to match powder doses.", link: "https://amzn.to/4zQOcoT" },
-            { brand: "Dose & Co", product: "Pure Collagen Unflavoured", source: "Bovine", dose: "12g", price: 23.09, notes: "<strong>Powder</strong> &ndash; Premium dairy-free formula with no artificial sweeteners.<br><br>⭐ <em>Reviewer Consensus:</em> Widely praised for great affordability and seamless blending into coffees, with many noticing improved hair thickness.", link: "https://amzn.to/4gJKh4F" },
-            { brand: "Dose & Co", product: "Pure Marine Collagen", source: "Marine", dose: "12g", price: 29.69, notes: "<strong>Powder</strong> &ndash; Premium dairy-free formula with no artificial sweeteners.<br><br>⭐ <em>Reviewer Consensus:</em> Customers rate this highly for its clean marine sourcing, frequently mentioning significant boosts in skin hydration and plumpness.", link: "https://amzn.to/46yxVaK" },
-            { brand: "Dose & Co", product: "Marine Collagen Beauty Elixir Powder Mango & Lychee", source: "Marine", dose: "5g", price: 19.99, notes: "<strong>Powder</strong> &ndash; Premium dairy-free formula with no artificial sweeteners.<br><br>⭐ <em>Reviewer Consensus:</em> A favorite for cold water and smoothies; reviewers love the refreshing taste and report stronger, faster-growing nails.", link: "https://amzn.to/4cjWcVu" },
-            { brand: "Dose & Co", product: "Marine Collagen Beauty Elixir Powder Strawberry Lemonade", source: "Marine", dose: "5g", price: 19.99, notes: "<strong>Powder</strong> &ndash; Premium dairy-free formula with no artificial sweeteners.<br><br>⭐ <em>Reviewer Consensus:</em> Highly rated for its summery flavour profile, making daily collagen intake feel like a treat rather than a chore.", link: "https://amzn.to/4yhnggu" },
-            { brand: "Dose & Co", product: "Dairy Free Collagen Creamer Vanilla", source: "Bovine", dose: "12g", price: 26.99, notes: "<strong>Powder Creamer</strong> &ndash; Premium dairy-free formula with no artificial sweeteners.<br><br>⭐ <em>Reviewer Consensus:</em> Fans love using this as a dairy-free coffee addition, though some note it requires vigorous stirring to prevent clumping.", link: "https://amzn.to/4dim9VE" },
-            { brand: "Edible Health", product: "Bovine Collagen Powder", source: "Bovine", dose: "10g", price: 23.99, notes: "<strong>Powder</strong> &ndash; Clean, single-ingredient hydrolyzed peptides.<br><br>⭐ <em>Reviewer Consensus:</em> Extremely popular for offering large tubs at a great price point; users consistently report positive effects on joints and gut digestion.", link: "https://amzn.to/3UvNJIM" },
-            { brand: "Edible Health", product: "Marine Collagen Powder", source: "Marine", dose: "10g", price: 30.72, notes: "<strong>Powder</strong> &ndash; Clean, single-ingredient hydrolyzed peptides.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers frequently commend the value for money compared to sachet brands, noting excellent results for skin elasticity and hair volume.", link: "https://amzn.to/4yiyIbL" },
-            { brand: "Edible Health", product: "Type II Marine Capsules", source: "Marine", dose: "400mg", price: 17.99, notes: "<strong>Capsules</strong> &ndash; Clean, single-ingredient hydrolyzed peptides.<br><br>⭐ <em>Reviewer Consensus:</em> Often chosen specifically for targeted joint support, with many customers experiencing reduced knee and hip pain after a few weeks.", link: "https://amzn.to/3TaujbR" },
-            { brand: "Edible Health", product: "Vegan Collagen Booster", source: "Vegan", dose: "N/A", price: 20.99, notes: "<strong>Capsules</strong> &ndash; Plant-based booster to support natural collagen production.<br><br>⭐ <em>Reviewer Consensus:</em> Plant-based users appreciate the comprehensive amino acid profile, reporting brighter skin without needing animal-derived products.", link: "https://amzn.to/4gxce0H" },
-            { brand: "Freja Bone Broth", product: "Beef Bone Broth", source: "Bovine", dose: "3.2g", price: 35.95, notes: "<strong>Liquid Broth</strong> &ndash; Award-winning traditional bone broth from quality ingredients.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers rave about the rich, comforting savory taste and gut-healing benefits, acting as a great alternative to sweet supplements.", link: "https://amzn.to/3UwKVuQ" },
-            { brand: "Freja Bone Broth", product: "Chicken Bone Broth", source: "Chicken", dose: "4g", price: 29.94, notes: "<strong>Liquid Broth</strong> &ndash; Award-winning traditional bone broth from quality ingredients.<br><br>⭐ <em>Reviewer Consensus:</em> Highly praised as a nourishing, warming base for soups or sipping, with many noting improvements in digestion and joint comfort.", link: "https://amzn.to/3UzaRGb" },
-            { brand: "Gold Collagen", product: "Pure Gold Collagen (10 Days)", source: "Marine", dose: "5g", price: 33.25, notes: "<strong>Liquid Bottle</strong> &ndash; Pioneering liquid supplement with targeted vitamins.<br><br>⭐ <em>Reviewer Consensus:</em> Regarded as a premium beauty treatment with rapid skin hydration results, but frequently cited as expensive for continuous daily use.", link: "https://amzn.to/4xH4ob2" },
-            { brand: "Gold Collagen", product: "Forte Plus (10 Days)", source: "Marine", dose: "8g", price: 47.59, notes: "<strong>Liquid Bottle</strong> &ndash; Pioneering liquid supplement with targeted vitamins.<br><br>⭐ <em>Reviewer Consensus:</em> Often purchased by older demographics for its fortified vitamin profile, with reviews highlighting significant improvements in deeper wrinkles.", link: "https://amzn.to/4x5K95x" },
-            { brand: "Gold Collagen", product: "Multidose Pure Plus", source: "Marine", dose: "8g", price: 41.99, notes: "<strong>Liquid Bottle</strong> &ndash; Pioneering liquid supplement with targeted vitamins.<br><br>⭐ <em>Reviewer Consensus:</em> Customers appreciate the large bottle format as a more eco-friendly and slightly more economical way to consume this premium formula.", link: "https://amzn.to/4xBzxws" },
-            { brand: "Hunter & Gather", product: "Bovine Collagen Peptides", source: "Bovine", dose: "13g", price: 28.0, notes: "<strong>Powder</strong> &ndash; Keto & paleo-friendly, strictly grass-fed or wild-caught.<br><br>⭐ <em>Reviewer Consensus:</em> Keto fans highly rate the clean, filler-free ingredients; the unflavoured peptides are repeatedly praised for dissolving invisibly into coffee.", link: "https://amzn.to/4iIDs5Q" },
-            { brand: "Hunter & Gather", product: "Marine Collagen Peptides", source: "Marine", dose: "10g", price: 35.8, notes: "<strong>Powder</strong> &ndash; Keto & paleo-friendly, strictly grass-fed or wild-caught.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers specifically highlight the pristine wild-caught sourcing, noting excellent mixability and positive changes to skin texture.", link: "https://amzn.to/4r0OAgz" }
-        ];
+const data = [
+    { brand: "Bettervits", product: "Marine Collagen Complex - 60 Capsules", source: "Marine", dose: "1g", price: 35.0, notes: "A daily marine collagen capsule enriched with hyaluronic acid, vitamin C, and biotin to promote skin elasticity and joint mobility.<br><br>⭐ <em>Reviewer Consensus:</em> Customers report noticeable improvements in skin hydration and hair growth within several weeks of consistent use. However, some find the capsules slightly large to swallow and note the price is on the higher side.", link: "https://www.amazon.co.uk/dp/B09W82SY2B?tag=collagenindex-21" },
+    { brand: "Ancient + Brave", product: "True Bovine Collagen Powder - 15 x 5g", source: "Bovine", dose: "5g", price: 22.0, notes: "Convenient single-serve sachets of pure hydrolysed bovine collagen peptides designed to effortlessly blend into daily hot or cold drinks.<br><br>⭐ <em>Reviewer Consensus:</em> Users highly praise this powder for being completely neutral in taste and dissolving effortlessly into morning coffee or tea without clumping. Many reviewers highlight visible relief in joint stiffness alongside healthier nails and glowing skin.", link: "https://www.amazon.co.uk/dp/B07YFX8B58?tag=collagenindex-21" },
+    { brand: "Star Nutra", product: "Marine Collagen Powder - 400g", source: "Marine", dose: "10g", price: 37.99, notes: "Wild-caught type I marine collagen powder offering highly bioavailable peptides to nourish hair, skin, and nails.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers appreciate the high-dose purity and fast solubility in morning juices, noting quick benefits for brittle nails and skin texture. Some mention that the unflavoured powder has a very subtle ocean hint if mixed only with plain water.", link: "https://www.amazon.co.uk/dp/B0GYPXHKL3?tag=collagenindex-21" },
+    { brand: "Applied Nutrition", product: "Bovine Collagen Powder Strawberry & Raspberry - 165g", source: "Bovine", dose: "5g", price: 10.0, notes: "A fruity strawberry and raspberry flavoured bovine collagen powder packed with vitamin C, biotin, and hyaluronic acid for radiant beauty support.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers love the fruity flavour and report that it mixes smoothly into cold water for an enjoyable daily drink. Several customers notice improved skin radiance and reduced morning joint stiffness, though a few note a slightly sweet aftertaste.", link: "https://www.amazon.co.uk/dp/B0BNJ5X7LB?tag=collagenindex-21" },
+    { brand: "Pura Collagen", product: "Glow+ Peptides Powder - 284g", source: "Bovine", dose: "10g", price: 26.29, notes: "A high-strength Verisol bovine collagen powder formulated with essential vitamins and hyaluronic acid to stimulate natural skin rejuvenation.<br><br>⭐ <em>Reviewer Consensus:</em> Customers note significant rejuvenation in skin elasticity and reduced facial fine lines after finishing their first tub. Most find the unflavoured blend easy to mix into smoothies, though it requires vigorous stirring in cold liquids.", link: "https://www.amazon.co.uk/dp/B08XY79K7Z?tag=collagenindex-21" },
+    { brand: "Alpha01", product: "Multi Collagen 2400mg - 90 Capsules", source: "Multi", dose: "2.4g (Multi-type: Types I, II, III, V & X)", price: 9.99, notes: "Multi-source collagen capsules blending five collagen types with vitamin C and hyaluronic acid for full-body connective tissue support.<br><br>⭐ <em>Reviewer Consensus:</em> Users frequently mention noticeable improvements in knee and joint comfort alongside healthier nail growth. The comprehensive five-type blend is praised for its value, though taking multiple daily capsules can feel cumbersome to some.", link: "https://www.amazon.co.uk/dp/B084YQW9DN?tag=collagenindex-21" },
+    { brand: "Nutravita", product: "Bovine Collagen Powder - 500g", source: "Bovine", dose: "10g", price: 18.99, notes: "An unflavoured, gold-standard bovine collagen peptide powder that dissolves smoothly to strengthen joints and enhance skin vitality.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers consistently commend this powder for being virtually odourless, clump-free, and blending seamlessly into hot tea or porridge. Many long-term users report sustained joint flexibility and firmer skin with excellent value per serving.", link: "https://www.amazon.co.uk/dp/B096Y5T5R1?tag=collagenindex-21" },
+    { brand: "Nutravita", product: "Marine Collagen 1000mg with Hyaluronic Acid - 60 Capsules", source: "Marine", dose: "1g", price: 13.99, notes: "High-potency marine collagen capsules paired with hyaluronic acid to support deep hydration and firmer-looking skin.<br><br>⭐ <em>Reviewer Consensus:</em> Customers praise these capsules for strengthening thinning hair and improving skin moisture levels across several months of use. They are considered very easy to take daily, with minimal to no fishy aftertaste reported.", link: "https://www.amazon.co.uk/dp/B07XY4V526?tag=collagenindex-21" },
+    { brand: "SuperSelf", product: "Marine Collagen 2200mg - 120 Capsules", source: "Marine", dose: "2.2g", price: 15.83, notes: "A high-strength marine collagen complex fortified with vitamin C and hyaluronic acid to boost daily skin and joint care.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers value the potent ingredient combination, noting visible gains in skin suppleness and everyday joint mobility. A few customers mention that taking four capsules daily requires consistency, but appreciate the lack of unpleasant flavours.", link: "https://www.amazon.co.uk/dp/B083KNQJW8?tag=collagenindex-21" },
+    { brand: "Reverse Life", product: "Marine Collagen Liquid Mixed Berry - 500ml", source: "Marine", dose: "10g", price: 23.02, notes: "A berry-flavoured liquid marine collagen drink delivering 10,000mg of peptides per serving for fast, high-potency beauty nourishment.<br><br>⭐ <em>Reviewer Consensus:</em> Customers appreciate the convenient ready-to-drink liquid format and observe noticeable brightening of dull skin and thicker hair. Opinions on the sweet berry flavour are mixed, but most agree it works much faster than standard pills.", link: "https://www.amazon.co.uk/dp/B08W1SXHDJ?tag=collagenindex-21" },
+    { brand: "The Intelligent Health", product: "Bovine Collagen Powder - 450g", source: "Bovine", dose: "13g", price: 17.97, notes: "Pure grass-fed bovine collagen peptides formulated as an unflavoured, highly dissolvable powder for bone and joint maintenance.<br><br>⭐ <em>Reviewer Consensus:</em> Users highlight the clean, unflavoured profile that dissolves completely in hot coffee without altering its taste or leaving grit. Many report noticeable reductions in joint discomfort and stronger fingernails within a month.", link: "https://www.amazon.co.uk/dp/B07G5H6FC2?tag=collagenindex-21" },
+    { brand: "BioAscend", product: "Multi Collagen Complex - 120 Capsules", source: "Multi", dose: "1.5g (Multi-type: Types I, II, III, V & X)", price: 19.99, notes: "A broad-spectrum five-type collagen capsule complex enhanced with biotin and vitamin C for all-around hair, nail, and skin wellness.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers like the multi-source formula combining five collagen types with biotin, noting stronger nails and less daily hair fall. The capsules are described as easy to swallow without any lingering stomach discomfort.", link: "https://www.amazon.co.uk/dp/B0FSLQ113M?tag=collagenindex-21" },
+    { brand: "Vitabiotics", product: "Jointace Collagen - 30 Tablets", source: "Chicken", dose: "0.3g (Type II)", price: 7.77, notes: "A targeted joint-support tablet uniting type II collagen with glucosamine, chondroitin, and ginger extract to maintain cartilage flexibility.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers widely report marked reductions in knee aches and improved mobility when walking or exercising. Most find the tablets manageable to take with dinner, considering them an essential daily joint maintenance supplement.", link: "https://www.amazon.co.uk/dp/B002FOJ89S?tag=collagenindex-21" },
+    { brand: "Incite Nutrition", product: "Marine Collagen 1200mg - 120 Capsules", source: "Marine", dose: "1.2g", price: 9.99, notes: "A multi-nutrient marine collagen formula containing essential trace minerals and vitamins to support daily cellular health and glowing skin.<br><br>⭐ <em>Reviewer Consensus:</em> Customers love the affordable price point and notice noticeable improvements in hair thickness and nail durability. The capsules are easy to swallow and do not produce any unpleasant repeat or aftertaste.", link: "https://www.amazon.co.uk/dp/B08WJ2QHFY?tag=collagenindex-21" },
+    { brand: "WeightWorld", product: "Vegan Collagen Complex - 120 Capsules", source: "Vegan", dose: "0g (Vegan plant-based complex)", price: 18.48, notes: "A plant-based collagen-boosting capsule supplement designed to naturally stimulate internal collagen synthesis without animal ingredients.<br><br>⭐ <em>Reviewer Consensus:</em> Plant-based reviewers praise this cruelty-free alternative for noticeably enhancing skin hydration and giving a natural glow. Many appreciate the gentle capsule form, although results can take several weeks of consistent use to show.", link: "https://www.amazon.co.uk/dp/B07RY9SYLV?tag=collagenindex-21" },
+    { brand: "Swedish Nutra", product: "Gold Retinol Marine Collagen Liquid - 500ml", source: "Marine", dose: "12.5g", price: 28.33, notes: "A premium liquid marine collagen supplement infused with retinol and vitamins to deliver concentrated anti-ageing skin care.<br><br>⭐ <em>Reviewer Consensus:</em> Users rave about the rapid anti-ageing effects, reporting smoother facial skin and improved complexion tone from the retinol blend. The liquid shot is regarded as highly potent and convenient, though some find the taste quite intense.", link: "https://www.amazon.co.uk/dp/B0CWPJLJ49?tag=collagenindex-21" },
+    { brand: "Ancient + Brave", product: "Wild Marine Collagen Powder - 15 x 5g", source: "Marine", dose: "5g", price: 25.84, notes: "Sustainably sourced wild marine collagen powder sachets crafted for rapid absorption and easy on-the-go beauty nutrition.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers commend the convenient travel sachets that dissolve cleanly into matcha or morning drinks with very little fishy odour. Many note a marked enhancement in skin hydration and hair vitality within a few weeks of travel use.", link: "https://www.amazon.co.uk/dp/B0BMVW7PRJ?tag=collagenindex-21" },
+    { brand: "Novomins", product: "Collagen Gummies - 60 Gummies", source: "Marine", dose: "1g", price: 14.99, notes: "Delicious chewable collagen gummies enriched with hyaluronic acid and vitamin C for a tasty, convenient daily glow.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers love the pleasant, chewy texture and delicious fruity taste that makes remembering daily collagen enjoyable. Multiple users report plumper-feeling skin and fewer broken nails after regular snacking routines.", link: "https://www.amazon.co.uk/dp/B08K4S6BV7?tag=collagenindex-21" },
+    { brand: "Free Soul", product: "Marine Collagen Gummies - 60 Gummies", source: "Marine", dose: "1g", price: 9.99, notes: "Berry-flavoured marine collagen gummies created to support strong nails, luscious hair, and healthy skin in a fun chewable format.<br><br>⭐ <em>Reviewer Consensus:</em> Customers highlight the tasty berry flavour and convenience for those who dislike swallowing large capsules or mixing powders. Several users note steady progress in nail strength, though some remark on the slightly chewy consistency.", link: "https://www.amazon.co.uk/dp/B0C3RXPTJ1?tag=collagenindex-21" },
+    { brand: "Bulk", product: "Collagen Powder Unflavoured - 500g", source: "Bovine", dose: "12g", price: 15.99, notes: "An unflavoured hydrolysed bovine collagen powder enriched with vitamin C to assist muscle recovery and normal cartilage formation.<br><br>⭐ <em>Reviewer Consensus:</em> Athletes and gym-goers report excellent support for post-workout joint recovery and overall tendon resilience. The powder mixes easily into protein shakes and smoothies, offering great nutritional value without unwanted sweetness.", link: "https://www.amazon.co.uk/dp/B07PGBBNTR?tag=collagenindex-21" },
+    { brand: "VitaBright", product: "Bovine Collagen Powder - 500g", source: "Bovine", dose: "10g", price: 16.9, notes: "A versatile pure bovine peptide powder providing clean, bioavailable protein to replenish declining natural collagen levels.<br><br>⭐ <em>Reviewer Consensus:</em> Customers consistently praise this powder for dissolving smoothly into morning tea without leaving clumps or chemical smells. Regular users note reduced stiffness in hips and knees, alongside faster nail growth.", link: "https://www.amazon.co.uk/dp/B0C8NRHCRT?tag=collagenindex-21" },
+    { brand: "Natures Cure", product: "Bovine Collagen Powder - 450g", source: "Bovine", dose: "10g", price: 16.98, notes: "Halal-certified hydrolysed bovine collagen powder formulated to bolster joint flexibility and daily connective tissue resilience.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers appreciate the verified Halal certification and completely unflavoured formulation that integrates easily into soups or porridge. Many report positive changes in joint mobility and general skin moisture.", link: "https://www.amazon.co.uk/dp/B082WB2XGD?tag=collagenindex-21" },
+    { brand: "Nutravita", product: "Marine Collagen 1000mg - 60 Capsules", source: "Marine", dose: "1g", price: 9.5, notes: "Pure type I hydrolysed marine collagen capsules offering straightforward daily support for hair, nails, and skin texture.<br><br>⭐ <em>Reviewer Consensus:</em> Users find these capsules very convenient for a straightforward daily beauty regime, noting firmer skin and stronger nails over time. The lack of any fishy taste or digestive upset is widely appreciated by reviewers.", link: "https://www.amazon.co.uk/dp/B08JCXBG5S?tag=collagenindex-21" },
+    { brand: "Oxford Origins", product: "Collagen Complex - 90 Capsules", source: "Bovine", dose: "1.2g", price: 9.39, notes: "A UK-crafted collagen complex featuring vitamins A, C, and E to protect against oxidative stress while nourishing hair and nails.<br><br>⭐ <em>Reviewer Consensus:</em> Customers report positive changes in brittle nails and healthier skin tone after a few weeks of daily adherence. The UK-made capsules are easy to swallow, though a couple of reviewers mention wishing for a higher count per bottle.", link: "https://www.amazon.co.uk/dp/B0BGSPLXGZ?tag=collagenindex-21" },
+    { brand: "Sunna Supplements", product: "Halal Bovine Collagen Powder - 250g", source: "Bovine", dose: "10g", price: 26.99, notes: "A pure halal-certified bovine collagen powder providing an unflavoured protein boost suitable for daily smoothies and shakes.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers praise the strict Halal standard and how effortlessly the fine powder blends into hot coffee or oatmeal without clumping. Many observe noticeable joint pain relief and a subtle boost in daily energy.", link: "https://www.amazon.co.uk/dp/B0CK54W3HV?tag=collagenindex-21" },
+    { brand: "Nutrian", product: "Collagen+ 1200mg Bovine Peptides - 120 Capsules", source: "Bovine", dose: "1.2g (Types I & III)", price: 15.99, notes: "Grass-fed bovine collagen capsules supplying bioactive types I and III peptides to maintain supple skin and healthy joints.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers note improvements in skin softness and less crackling in knee joints when climbing stairs. The grass-fed capsules are deemed easy to swallow and gentle on sensitive stomachs.", link: "https://www.amazon.co.uk/dp/B0DNZDYS3L?tag=collagenindex-21" },
+    { brand: "Absolute Collagen", product: "Marine Liquid Raspberry - 14 Sachets", source: "Marine", dose: "8g", price: 33.99, notes: "Direct-to-drink raspberry marine collagen liquid sachets loaded with vitamin C to stimulate everyday skin firmness and vitality.<br><br>⭐ <em>Reviewer Consensus:</em> Many users praise the visible boost in skin luminosity and reduced morning joint stiffness from these high-dose sachets. However, several find the tart raspberry flavour somewhat intense and note the higher cost per serving.", link: "https://www.amazon.co.uk/dp/B0F1FWY1H6?tag=collagenindex-21" },
+    { brand: "Zooki", product: "Marine Collagen 11,000mg Sour Cherry - 14 Sachets", source: "Marine", dose: "11g", price: 29.89, notes: "High-potency sour cherry marine collagen sachets utilising advanced lipid-based delivery for enhanced nutrient absorption.<br><br>⭐ <em>Reviewer Consensus:</em> Customers rave about the high peptide potency and pleasant sour cherry taste taken straight from the sachet. Most report noticeable skin firmness and better hair texture, despite the premium price tag.", link: "https://www.amazon.co.uk/dp/B0CNNMNGV1?tag=collagenindex-21" },
+    { brand: "Zooki", product: "Marine Collagen 5,000mg Mango Peach - 14 Sachets", source: "Marine", dose: "5g", price: 22.39, notes: "A tasty mango-peach marine collagen sachet formulated for rapid uptake to support healthy hydration and youthful skin.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers enjoy the fruity mango-peach taste and find the grab-and-go sachet format exceptionally easy to maintain daily. Many note early signs of plumper skin, though some prefer the stronger 11,000mg version.", link: "https://www.amazon.co.uk/dp/B09XY2GXY7?tag=collagenindex-21" },
+    { brand: "Alpha01", product: "Marine Collagen Powder - 400g", source: "Marine", dose: "12g (Types 1 & 3)", price: 19.99, notes: "Pure wild-caught Canadian marine collagen peptides offering types 1 and 3 collagen to renew skin firmness and hair strength.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers appreciate the pure Canadian marine sourcing and report that it dissolves cleanly in warm tea with negligible aftertaste. Users frequently observe faster-growing nails and improved skin elasticity within a month.", link: "https://www.amazon.co.uk/dp/B088MDYBDB?tag=collagenindex-21" },
+    { brand: "Healthspan", product: "Marine Collagen 1000mg - 60 Tablets", source: "Marine", dose: "0.8g Type I, 0.2g Type II (Total: 1g)", price: 12.99, notes: "Dual-action collagen tablets pairing types I and II marine collagen to simultaneously protect joints and support skin elasticity.<br><br>⭐ <em>Reviewer Consensus:</em> Customers report dependable relief from joint discomfort alongside steady improvements in nail resilience. The tablets are fairly smooth to swallow, and users value the trusted brand reputation and clear dosing.", link: "https://www.amazon.co.uk/dp/B0BFJ7KVFV?tag=collagenindex-21" },
+    { brand: "Lindens", product: "Marine Collagen 400mg - 90 Capsules", source: "Marine", dose: "0.4g", price: 8.84, notes: "A convenient one-a-day marine collagen capsule designed to maintain healthy ligaments, tendons, and connective tissues.<br><br>⭐ <em>Reviewer Consensus:</em> Users love the convenient one-a-day dosage and letterbox-friendly pouch packaging for reliable recurring deliveries. Many report gradual improvements in joint flexibility and skin moisture at a very budget-friendly cost.", link: "https://www.amazon.co.uk/dp/B00O4ACVTK?tag=collagenindex-21" },
+    { brand: "Applied Nutrition", product: "Bovine Collagen Peptides Unflavoured - 300g", source: "Bovine", dose: "20g", price: 18.56, notes: "An easily soluble halal bovine collagen powder that integrates seamlessly into warm or cold drinks for daily beauty and wellness.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers highlight how cleanly this unflavoured bovine powder dissolves into hot drinks without altering the beverage's original aroma. Long-term users praise its positive effects on joint comfort and post-exercise recovery.", link: "https://www.amazon.co.uk/dp/B0CKRJR4DX?tag=collagenindex-21" },
+    { brand: "Applied Nutrition", product: "Marine Collagen Powder Unflavoured - 300g", source: "Marine", dose: "10g", price: 22.99, notes: "A clean, unflavoured marine collagen peptide powder crafted to reinforce healthy nail growth, radiant skin, and shiny hair.<br><br>⭐ <em>Reviewer Consensus:</em> Customers appreciate the clean marine peptide profile that mixes effortlessly into daily smoothies without any lingering fishiness. Multiple reviews mention visibly clearer, more hydrated skin and stronger fingernails.", link: "https://www.amazon.co.uk/dp/B0CQCWKKWJ?tag=collagenindex-21" },
+    { brand: "N2 Natural Nutrition", product: "Multi Collagen 1650mg - 180 Capsules", source: "Multi", dose: "1.65g (Bovine & Marine blend: Types I, II, III, V, X)", price: 19.87, notes: "A comprehensive blend of bovine and marine collagen capsules bolstered by vitamin C to support multiple bodily tissues.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers praise the multi-collagen spectrum for delivering all-round benefits for joint aches and hair thinning. The capsules are considered easy to take, though some reviewers wish the daily dose required fewer pills.", link: "https://www.amazon.co.uk/dp/B0DJGXBKDL?tag=collagenindex-21" },
+    { brand: "WeightWorld", product: "Pure Marine Collagen 1200mg - 120 Capsules", source: "Marine", dose: "1.2g", price: 15.99, notes: "High-strength hydrolysed marine collagen capsules offering a simple, fuss-free routine for firmer skin and fuller hair.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers praise the outstanding value and consistent results, noting significantly firmer skin and thicker hair over several months. The capsules are straightforward to swallow and do not produce unpleasant acid reflux.", link: "https://www.amazon.co.uk/dp/B079C336Y3?tag=collagenindex-21" },
+    { brand: "Revive Naturals", product: "Multi Collagen Protein Powder - 1kg", source: "Multi", dose: "10g (Multi-type: Bovine, Fish, Chicken & Eggshell)", price: 34.99, notes: "A bulk five-source collagen powder delivering comprehensive types I, II, III, V, and X peptides for complete physical vitality.<br><br>⭐ <em>Reviewer Consensus:</em> Customers love the generous 1kg bulk tub, noting it lasts a long time and mixes well into shakes or baking. Reviewers frequently report marked joint pain reduction and revitalised skin texture across all ages.", link: "https://www.amazon.co.uk/dp/B0CBVJ53BQ?tag=collagenindex-21" },
+    { brand: "Free Soul", product: "Marine Collagen Powder with Hyaluronic Acid", source: "Marine", dose: "10g", price: 29.99, notes: "An unflavoured marine collagen powder enhanced with vitamin C and hyaluronic acid for targeted hydration and skin replenishment.<br><br>⭐ <em>Reviewer Consensus:</em> Users praise the clean dissolvability and the added hyaluronic acid that leaves facial skin feeling deeply hydrated. It blends seamlessly into morning iced lattes without leaving chalky deposits or unwanted scents.", link: "https://www.amazon.co.uk/dp/B0FNX9S2HZ?tag=collagenindex-21" },
+    { brand: "New Nordic", product: "Hyaluronic Marine Collagen Shots Berry - 15 Pack", source: "Marine", dose: "5g", price: 26.14, notes: "Ready-to-drink berry collagen shots blending liquid marine peptides with coffee cherry extract to defend against premature ageing.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers appreciate the fruity berry taste and convenience of tearing open a liquid shot during a busy morning commute. Many note a fresh glow to tired-looking skin, though some find the price slightly steep for daily use.", link: "https://www.amazon.co.uk/dp/B09MKXR35G?tag=collagenindex-21" },
+    { brand: "Well & Wild", product: "Marine Collagen Gummies Strawberry - 60 Gummies", source: "Marine", dose: "1g", price: 12.99, notes: "Sugar-free strawberry collagen gummies infused with marine peptides and vitamin C for an enjoyable daily beauty treat.<br><br>⭐ <em>Reviewer Consensus:</em> Customers rave about the delicious natural strawberry flavour and soft texture, making it a treat rather than a chore. Users notice reduced hair shed and healthier nails with regular daily chewing.", link: "https://www.amazon.co.uk/dp/B0GSX14Z65?tag=collagenindex-21" },
+    { brand: "Absolute Collagen", product: "Marine Liquid Lemon - 14 Sachets", source: "Marine", dose: "8g", price: 33.99, notes: "Refreshing lemon-flavoured liquid marine collagen sachets packed with 8,000mg of peptides to strengthen hair, skin, and nails.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers note noticeable improvements in facial plumpness and nail strength from the concentrated marine peptide formula. However, feedback on the tart lemon taste is divided, with some users diluting it in fruit juice.", link: "https://www.amazon.co.uk/dp/B0DTPZTF15?tag=collagenindex-21" },
+    { brand: "EneriWell", product: "Multi Collagen Liquid - 30 Sachets", source: "Multi", dose: "10g (Multi-type blend)", price: 18.03, notes: "On-the-go multi-collagen liquid sachets providing a convenient daily blend of essential collagen types for busy lifestyles.<br><br>⭐ <em>Reviewer Consensus:</em> Customers like the portable liquid sachets that make taking multiple collagen types effortless while traveling. Several note improvements in knee mobility, though opinions vary on the natural sweetness of the liquid.", link: "https://www.amazon.co.uk/dp/B0FHKW7ZJG?tag=collagenindex-21" },
+    { brand: "Wellgard", product: "Gold Standard Bovine Collagen Powder - 400g", source: "Bovine", dose: "13g", price: 16.99, notes: "A gold-standard grass-fed bovine collagen powder rich in essential amino acids to restore connective tissue and promote glowing skin.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers extensively praise this fine powder for dissolving instantly in coffee without lumps, taste, or greasy film. Countless users report dramatic transformations in brittle nails, thinning hair, and stiff joints.", link: "https://www.amazon.co.uk/dp/B07Q6YSGF9?tag=collagenindex-21" },
+    { brand: "ActivGums", product: "Marine Collagen Gummies Berry - 180 Gummies", source: "Marine", dose: "1g", price: 19.99, notes: "Chewable strawberry and blueberry gummies containing marine collagen, zinc, and biotin for whole-family skin and hair wellness.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers enjoy the dual berry flavours and find them an enjoyable, family-friendly way to supplement collagen and biotin. Reviewers mention noticeable skin smoothing, although the chewiness is slightly firm for some.", link: "https://www.amazon.co.uk/dp/B0CC5XLWJ9?tag=collagenindex-21" },
+    { brand: "Swedish Nutra", product: "Hydrolysed Marine Collagen Liquid - 500ml", source: "Marine", dose: "10g", price: 19.5, notes: "A high-dose liquid marine collagen supplement designed for superior bio-absorption to maintain supple skin and joint ease.<br><br>⭐ <em>Reviewer Consensus:</em> Customers highlight the potent liquid dosage, reporting visible reductions in fine lines and deeper skin hydration within weeks. The berry taste is generally liked, though a small measuring cap is required daily.", link: "https://www.amazon.co.uk/dp/B096SQ69NL?tag=collagenindex-21" },
+    { brand: "NutriVolv", product: "Marine Collagen 1000mg - 90 Capsules", source: "Marine", dose: "1g", price: 6.99, notes: "Pure marine collagen capsules formulated to support joint mobility, muscle recovery, and youthful skin elasticity.<br><br>⭐ <em>Reviewer Consensus:</em> Users appreciate the great pricing and compact capsule size, reporting good support for stiff morning joints and nail growth. A few reviewers note that results take roughly four to six weeks of steady use to become noticeable.", link: "https://www.amazon.co.uk/dp/B08MY5X4HJ?tag=collagenindex-21" },
+    { brand: "New Leaf", product: "Pure Marine Collagen Type 1 - 60 Capsules", source: "Marine", dose: "1.5g", price: 9.97, notes: "An essential amino acid marine collagen complex with hyaluronic acid and vitamin C for concentrated structural nourishment.<br><br>⭐ <em>Reviewer Consensus:</em> Customers report improved skin texture and stronger fingernails that no longer split or peel after regular intake. The capsules are odourless, easy to swallow, and provide great value for money.", link: "https://www.amazon.co.uk/dp/B091V2W4Z2?tag=collagenindex-21" },
+    { brand: "Pretty Smart Food", product: "Marine Collagen 1400mg - 90 Capsules", source: "Marine", dose: "1.4g", price: 15.79, notes: "A tailored women's beauty capsule combining marine peptides with biotin, blueberry extract, and vitamins for vibrant complexion care.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers love the comprehensive beauty blend with biotin and blueberry, noting significant reduction in hair shedding. The capsules are easy to take daily without stomach upset or unpleasant aftertaste.", link: "https://www.amazon.co.uk/dp/B0847C7P5P?tag=collagenindex-21" },
+    { brand: "Omnia", product: "Marine Collagen 1200mg - 120 Capsules", source: "Marine", dose: "1.2g", price: 10.99, notes: "A 120-capsule supply of UK-made marine collagen paired with hyaluronic acid to maintain resilient nails and radiant skin.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers praise the high-potency formula and generous 120-count bottle that provides noticeable benefits for joint flexibility and skin tone. The capsules are described as tasteless, smooth to swallow, and well-packaged.", link: "https://www.amazon.co.uk/dp/B0CWVGVPV4?tag=collagenindex-21" },
+    { brand: "Optimum Nutrition", product: "Bovine Collagen Peptides Powder - 400g", source: "Bovine", dose: "20g", price: 16.99, notes: "An unflavoured high-protein bovine collagen drink powder featuring added vitamin C to aid collagen synthesis and cartilage health.<br><br>⭐ <em>Reviewer Consensus:</em> Customers like the minimal two-ingredient formulation that mixes cleanly into pre- or post-workout shakes. Many gym enthusiasts note enhanced joint comfort and good general recovery with zero artificial flavouring.", link: "https://www.amazon.co.uk/dp/B0FS849S86?tag=collagenindex-21" },
+    { brand: "Bulk", product: "Collagen Powder Apple - 500g", source: "Bovine", dose: "12g", price: 15.99, notes: "A crisp apple-flavoured bovine collagen peptide powder enriched with vitamin C to support healthy cartilage and muscles.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers praise the crisp apple flavour for providing an easy, refreshing way to take daily bovine peptides. The powder dissolves smoothly in cold water, with many noticing quicker post-exercise joint recovery.", link: "https://www.amazon.co.uk/dp/B098KHY6CB?tag=collagenindex-21" },
+    { brand: "Omnia", product: "Marine Collagen 1200mg - 60 Capsules", source: "Marine", dose: "1.2g", price: 7.09, notes: "A compact 60-capsule pack of marine collagen, vitamin C, and hyaluronic acid designed for daily skin and nail nourishment.<br><br>⭐ <em>Reviewer Consensus:</em> Users like this smaller 60-count starter size for testing marine collagen, reporting firmer facial skin and healthier nails. The capsules are easy to swallow with no fishy regurgitation.", link: "https://www.amazon.co.uk/dp/B0DGDN9D4X?tag=collagenindex-21" },
+    { brand: "Nu U Nutrition", product: "Bovine Collagen Powder - 600g", source: "Bovine", dose: "6g (Types I & II)", price: 19.96, notes: "A value-sized pouch of unflavoured bovine collagen peptides providing over three months of daily joint and beauty support.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers appreciate the generous 100-serving pouch and noticeable reduction in knee clicks and lower back stiffness. It dissolves well in hot drinks, though some find it settles if left sitting in cold liquids.", link: "https://www.amazon.co.uk/dp/B076H512VG?tag=collagenindex-21" },
+    { brand: "CORREXIKO", product: "Marine Collagen Powder 10,000mg - 140g", source: "Marine", dose: "10g", price: 16.99, notes: "A concentrated marine collagen powder formulated for rapid dissolution to replenish fine lines and boost hair thickness.<br><br>⭐ <em>Reviewer Consensus:</em> Customers highlight visible reductions in fine lines and deeper skin hydration after a few weeks of use. The unflavoured powder blends well into morning coffee, though some recommend stirring quickly to avoid slight clumping.", link: "https://www.amazon.co.uk/dp/B07BR8TMTD?tag=collagenindex-21" },
+    { brand: "MAV Nutrition", product: "Collagen Gummies 200mg - 60 Gummies", source: "Bovine", dose: "0.2g", price: 14.95, notes: "Tasty beauty gummies combining hydrolysed collagen with 2,500mcg of biotin to encourage vibrant hair growth and nail strength.<br><br>⭐ <em>Reviewer Consensus:</em> Users love the enjoyable gummy format and report noticeable reductions in nail peeling and accelerated hair growth. A few customers note the added sugar content, but overall consider it a delicious daily beauty supplement.", link: "https://www.amazon.co.uk/dp/B07DM3MBCS?tag=collagenindex-21" },
+    { brand: "Alpha01", product: "Marine Collagen 2400mg - 90 Capsules", source: "Marine", dose: "2.4g", price: 9.99, notes: "An eco-friendly pouch of marine collagen capsules fortified with vitamin C and hyaluronic acid for skin and joint regeneration.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers appreciate the recyclable pouch packaging and note positive improvements in skin elasticity and joint flexibility. The high-potency capsules are smooth to swallow, with no noticeable aftertaste.", link: "https://www.amazon.co.uk/dp/B0CD5YGLYN?tag=collagenindex-21" },
+    { brand: "Bulk", product: "Collagen Powder Mango - 500g", source: "Bovine", dose: "12g", price: 15.99, notes: "A tropical mango-flavoured bovine collagen powder formulated with vitamin C for a refreshing daily wellness drink.<br><br>⭐ <em>Reviewer Consensus:</em> Customers enjoy the vibrant tropical mango flavour as a palatable alternative to unflavoured collagen powders. It mixes well into cold morning shakes, with many users reporting less joint stiffness during workouts.", link: "https://www.amazon.co.uk/dp/B098KHJ1FJ?tag=collagenindex-21" },
+    { brand: "N2 Natural Nutrition", product: "Marine Collagen Peptan - 150 Capsules", source: "Marine", dose: "1g", price: 19.95, notes: "Peptan marine collagen capsules complemented by magnesium and vitamin C to enhance muscle function and skin anti-ageing.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers praise the inclusion of magnesium and vitamin C alongside Peptan marine collagen, noting smoother skin and fewer joint aches. The capsules are easy to take daily and provide long-lasting value over a 75-day course.", link: "https://www.amazon.co.uk/dp/B0B6V9BT5J?tag=collagenindex-21" },
+    { brand: "Troo Health Care", product: "Collagen Complex Orange - 90 Gummies", source: "Bovine", dose: "1g", price: 15.97, notes: "Chewable natural orange gummies delivering a gentle collagen complex to easily support daily skin hydration and well-being.<br><br>⭐ <em>Reviewer Consensus:</em> Users appreciate the pleasant natural orange taste and chewable texture that makes daily supplementation simple. Several mention gentle improvements in skin hydration, though results can be subtler than high-dose powders.", link: "https://www.amazon.co.uk/dp/B0C1PB89YT?tag=collagenindex-21" },
+    { brand: "Alpha01", product: "Marine Collagen 2400mg - 90 Capsules", source: "Marine", dose: "2.4g", price: 8.99, notes: "Wild-caught marine collagen capsules formulated with hyaluronic acid and vitamin C for optimal cellular hydration and joint care.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers praise the clean, wild-caught marine sourcing and notice faster-growing nails and better joint comfort. The capsules are tasteless, easy to take, and offer great value for a high-strength formula.", link: "https://www.amazon.co.uk/dp/B088KR1YSJ?tag=collagenindex-21" },
+    { brand: "VitaBright", product: "Marine Collagen 2331mg - 120 Capsules", source: "Marine", dose: "2.33g", price: 14.99, notes: "A high-strength marine collagen complex enriched with hyaluronic acid to support female beauty routines and smoother skin texture.<br><br>⭐ <em>Reviewer Consensus:</em> Customers report noticeable improvements in facial moisture, smoother skin texture, and stronger nails. The capsules are straightforward to swallow and gentle on digestion, with no fishy odour.", link: "https://www.amazon.co.uk/dp/B08K3M7JD1?tag=collagenindex-21" },
+    { brand: "Myvitamins", product: "Bovine Collagen 400mg - 90 Capsules", source: "Bovine", dose: "0.4g (per capsule)", price: 7.99, notes: "Simple and effective bovine collagen capsules offering a 3-month supply to maintain joint comfort and skin structure.<br><br>⭐ <em>Reviewer Consensus:</em> Users highlight the simplicity and trusted quality of these bovine capsules for supporting daily joint health and hair vitality. They are very easy to swallow, making them a hassle-free addition to any fitness routine.", link: "https://www.amazon.co.uk/dp/B079KS2SD2?tag=collagenindex-21" },
+    { brand: "Omnia", product: "Pure Bovine Collagen Powder - 50 Servings", source: "Bovine", dose: "10g", price: 11.23, notes: "Pure unflavoured bovine collagen powder packed with essential amino acids to strengthen joints and enhance skin luminosity.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers commend this unflavoured powder for dissolving completely into hot morning coffee without changing the taste. Many report sustained improvements in knee mobility and skin softness within a few weeks.", link: "https://www.amazon.co.uk/dp/B0D92GRC3H?tag=collagenindex-21" },
+    { brand: "Nutravita", product: "Pure Marine Collagen 1200mg - 120 Tablets", source: "Marine", dose: "1.2g", price: 9.99, notes: "A two-month supply of pure marine collagen tablets designed to sustain skin firmness and healthy connective tissues.<br><br>⭐ <em>Reviewer Consensus:</em> Customers appreciate the solid two-month supply of pure marine collagen, observing firmer skin and stronger nails. The tablets are slightly dense, so some recommend taking them with plenty of water.", link: "https://www.amazon.co.uk/dp/B0D3J3MPCR?tag=collagenindex-21" },
+    { brand: "Hunter & Gather", product: "Bovine Collagen Powder - 400g", source: "Bovine", dose: "10g", price: 28.0, notes: "A clean, grass-fed bovine collagen powder free from fillers and additives to support gut health and youthful skin.<br><br>⭐ <em>Reviewer Consensus:</em> Users praise the exceptionally clean, grass-fed EU sourcing and complete lack of taste when stirred into coffee or broth. Many note impressive benefits for gut health, healthier hair, and daily joint ease.", link: "https://www.amazon.co.uk/dp/B07J65XBVS?tag=collagenindex-21" },
+    { brand: "Revive Naturals", product: "Multi Collagen Capsules - 120 Count", source: "Multi", dose: "2g (Multi-type: Bovine, Marine, Chicken)", price: 9.99, notes: "Multi-source collagen capsules uniting grass-fed bovine, marine, and avian peptides with vitamin C for holistic joint and tissue care.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers value the comprehensive multi-source blend for targeting joint pain relief and strengthening weak, brittle nails. The capsules are easy to swallow with no lingering aftertaste or digestive discomfort.", link: "https://www.amazon.co.uk/dp/B084QJ5QL2?tag=collagenindex-21" },
+    { brand: "Bare Biology", product: "Skinful Marine Collagen Powder - 300g", source: "Marine", dose: "5g", price: 39.95, notes: "MSC-certified sustainable marine collagen powder delivering pristine, unflavoured peptides for clean beauty and skin renewal.<br><br>⭐ <em>Reviewer Consensus:</em> Customers praise the MSC-certified sustainable sourcing and ultra-pure quality, noting glowing, revitalised skin within weeks. While some notice a very mild scent in plain water, it mixes imperceptibly into fruit juice or tea.", link: "https://www.amazon.co.uk/dp/B07YLQW6TM?tag=collagenindex-21" },
+    { brand: "Solgar", product: "Collagen Hyaluronic Acid Complex - 30 Tablets", source: "Chicken", dose: "0.72g (Type II)", price: 20.19, notes: "An advanced skin-support tablet combining patented BioCell collagen type II with hyaluronic acid and vitamin C to nourish deep dermal layers.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers widely commend this formula for visibly smoothing skin texture and providing noticeable relief from stiff joints. The tablets are on the larger side, but users feel the high-grade BioCell collagen delivers reliable results.", link: "https://www.amazon.co.uk/dp/B000Z94Z3Y?tag=collagenindex-21" },
+    { brand: "Inspiriko", product: "Multi Collagen Peptides Powder - 300g", source: "Multi", dose: "10g (Multi-type blend)", price: 22.67, notes: "A specialised multi-collagen peptide powder for women designed to promote hormonal harmony, nail resilience, and glowing skin.<br><br>⭐ <em>Reviewer Consensus:</em> Customers love the tailored women's formulation, reporting reduced hair loss and healthier skin radiance. The powder mixes smoothly into morning oats or smoothies without leaving any bitter flavour.", link: "https://www.amazon.co.uk/dp/B0D92FZBXC?tag=collagenindex-21" },
+    { brand: "Carlyle", product: "Marine Collagen 2900mg - 180 Capsules", source: "Marine", dose: "2.9g", price: 13.99, notes: "An extensive marine collagen complex boosted by turmeric, black pepper, and key micronutrients for comprehensive beauty and joint vitality.<br><br>⭐ <em>Reviewer Consensus:</em> Users appreciate the added turmeric and black pepper for boosting joint mobility alongside classic collagen benefits. The capsules are easy to incorporate into daily habits without leaving an upset stomach.", link: "https://www.amazon.co.uk/dp/B0CKFJLBDB?tag=collagenindex-21" },
+    { brand: "Weider", product: "Bovine Collagen Powder Unflavoured - 300g", source: "Bovine", dose: "9.5g", price: 13.96, notes: "A clinically backed Peptan bovine collagen powder with magnesium, vitamin C, and hyaluronic acid to regenerate cartilage and bone health.<br><br>⭐ <em>Reviewer Consensus:</em> Athletes and older users praise the Peptan bovine formula with magnesium for relieving persistent joint and cartilage discomfort. It dissolves smoothly in shakes, though the slight hint of stevia sweetness is noted by some.", link: "https://www.amazon.co.uk/dp/B01LNQAYLO?tag=collagenindex-21" },
+    { brand: "Nutrabytes", product: "Bovine Collagen Liquid Berry - 500ml", source: "Bovine", dose: "10g (Types 1 & 3)", price: 19.99, notes: "A berry-infused liquid bovine collagen formula delivering 10,000mg of types 1 and 3 peptides for fast-acting skin firmness.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers love the convenient liquid format that eliminates pill swallowing, noting positive changes in skin plumpness and nail strength. The mixed berry flavour is widely enjoyed, though measuring requires the included dosing cap.", link: "https://www.amazon.co.uk/dp/B093NBS8DY?tag=collagenindex-21" },
+    { brand: "Nutravita", product: "Marine Collagen 1400mg - 120 Tablets", source: "Marine", dose: "1.4g", price: 18.99, notes: "High-potency marine collagen tablets paired with hyaluronic acid to reinforce skin moisture retention and joint ease.<br><br>⭐ <em>Reviewer Consensus:</em> Customers observe substantial improvements in skin hydration and relief from sore knees after several weeks of daily use. While the tablets are somewhat firm to swallow, users rate the overall potency and brand reliability very highly.", link: "https://www.amazon.co.uk/dp/B0BHWL54ZM?tag=collagenindex-21" },
+    { brand: "New Leaf", product: "Bovine Collagen Gummies - 60 Gummies", source: "Bovine", dose: "1g", price: 9.94, notes: "Chewable bovine collagen gummies enriched with biotin and folic acid for an easy, flavorful approach to healthy skin and nails.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers appreciate the tasty chewable format and added biotin for revitalising thin hair and brittle nails. They find them much easier to stick with than powders, though the texture is slightly chewy.", link: "https://www.amazon.co.uk/dp/B0FBL4ZV5L?tag=collagenindex-21" },
+    { brand: "Seagarden", product: "Type 1 Marine Collagen Powder - 300g", source: "Marine", dose: "5g", price: 32.0, notes: "Pure Norwegian marine collagen powder providing 60 servings of type 1 peptides to replenish skin tone and elasticity.<br><br>⭐ <em>Reviewer Consensus:</em> Customers praise the clean Norwegian wild-cod sourcing and report significant increases in skin firmness and joint suppleness. It dissolves best in warm beverages or blended smoothies, as cold liquids may require extra stirring.", link: "https://www.amazon.co.uk/dp/B07417Q6LD?tag=collagenindex-21" },
+    { brand: "Absolute Collagen", product: "Marine Liquid Mango & Mandarin - 14 Sachets", source: "Marine", dose: "8g", price: 33.99, notes: "Zesty mango and mandarin liquid marine collagen sachets packed with vitamin C to enhance everyday dermal repair.<br><br>⭐ <em>Reviewer Consensus:</em> Users report noticeable skin brightening and accelerated nail growth from these convenient high-potency sachets. The tangy citrus flavour receives mixed reviews, with some preferring to mix it into morning yogurt.", link: "https://www.amazon.co.uk/dp/B0DBZVMC63?tag=collagenindex-21" },
+    { brand: "Revive Naturals", product: "Marine Collagen 2400mg - 180 Capsules", source: "Marine", dose: "2.4g", price: 15.99, notes: "A value pack of high-strength marine collagen capsules fortified with hyaluronic acid to encourage joint mobility and radiant skin.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers praise the generous 180-capsule bottle for offering great long-term value, noting steadier joint mobility and firmer skin. The capsules are smooth and easy to swallow on an empty stomach without issues.", link: "https://www.amazon.co.uk/dp/B0CD5ZJQW4?tag=collagenindex-21" },
+    { brand: "HealthEssent", product: "Multi Collagen 1650mg - 120 Capsules", source: "Multi", dose: "1.65g (Multi-type blend)", price: 9.97, notes: "A 6-in-1 multi-collagen supplement formulated with diverse collagen types to provide balanced connective tissue support.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers like the comprehensive multi-collagen formula and report good support for morning stiffness and nail resilience. The capsules are odorless, easy to ingest, and gentle on sensitive digestion.", link: "https://www.amazon.co.uk/dp/B0H5TQHGGV?tag=collagenindex-21" },
+    { brand: "Elevate Supplements", product: "Marine Collagen Type 1 - 60 Capsules", source: "Marine", dose: "1.2g", price: 15.99, notes: "Pure marine collagen capsules formulated with biotin and vitamin C to nourish the nervous system, joints, and complexion.<br><br>⭐ <em>Reviewer Consensus:</em> Customers mention improvements in hair shine and joint comfort after finishing their first bottle. The capsules are small, easy to swallow, and provide clean daily marine nutrition without aftertaste.", link: "https://www.amazon.co.uk/dp/B0F3JXF9G3?tag=collagenindex-21" },
+    { brand: "Zipvit", product: "Marine Collagen 1200mg - 120 Tablets", source: "Marine", dose: "1.2g (per tablet)", price: 8.49, notes: "An all-in-one marine collagen beauty tablet combining zinc, vitamin C, and hyaluronic acid for stronger nails and healthier hair.<br><br>⭐ <em>Reviewer Consensus:</em> Users frequently report stronger nails that resist breaking, alongside improvements in daily knee comfort. The tablets are affordable and convenient, though some note they require a full glass of water to swallow comfortably.", link: "https://www.amazon.co.uk/dp/B06Y38XVGK?tag=collagenindex-21" },
+    { brand: "WFN", product: "UC-II Type 2 Collagen Complex - 60 Capsules", source: "Chicken", dose: "0.04g (Type II)", price: 22.9, notes: "German-manufactured undenatured type II collagen capsules formulated with Boswellia serrata to target joint comfort and flexibility.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers dealing with joint stiffness report significant relief and restored flexibility when walking or climbing stairs. The German-made capsules are small, convenient to take once daily, and highly regarded for mobility support.", link: "https://www.amazon.co.uk/dp/B0C2HCV68H?tag=collagenindex-21" },
+    { brand: "Dose & Co", product: "Pure Bovine Collagen Powder - 283g", source: "Bovine", dose: "12g (Types I & III)", price: 23.09, notes: "Halal and keto-friendly unflavoured bovine collagen powder providing 12g of protein per serving for hair, skin, and nail support.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers love how easily this powder stirs into morning coffee without affecting its taste or leaving oily residues. Many note faster hair growth, plumper skin, and steady joint support from the 12g protein dose.", link: "https://www.amazon.co.uk/dp/B0GFDXPJVH?tag=collagenindex-21" },
+    { brand: "Horbäach", product: "Marine Collagen Type 1 - 90 Capsules", source: "Marine", dose: "2.2g", price: 8.54, notes: "A clean type 1 marine collagen capsule blend fortified with biotin and vitamin C to enhance daily personal care routines.<br><br>⭐ <em>Reviewer Consensus:</em> Customers praise the high-absorption marine peptide formula, noting shinier hair and smoother skin within a month of use. The capsules are tasteless, easy to take with meals, and competitively priced.", link: "https://www.amazon.co.uk/dp/B0F7HX26P6?tag=collagenindex-21" },
+    { brand: "WeightWorld", product: "Marine Collagen 1800mg - 180 Tablets", source: "Marine", dose: "1.8g", price: 18.88, notes: "A two-month supply of high-dose hydrolysed marine collagen tablets designed to reinforce natural skin elasticity and joint structure.<br><br>⭐ <em>Reviewer Consensus:</em> Users appreciate the long-lasting 3-month supply and observe noticeable improvements in skin suppleness and joint comfort. The tablets are relatively large, so reviewers advise swallowing them with a generous drink.", link: "https://www.amazon.co.uk/dp/B0C7WG2333?tag=collagenindex-21" },
+    { brand: "Free Soul", product: "Marine Collagen Powder Unflavoured - 150g", source: "Marine", dose: "10g", price: 19.99, notes: "A versatile marine collagen powder blend with hyaluronic acid and vitamin C for smooth mixing into wellness smoothies.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers highlight the clean powder consistency and its hydrating benefits for dry skin when mixed into protein smoothies. It dissolves well with minimal stirring and leaves no unpleasant fishy scent.", link: "https://www.amazon.co.uk/dp/B0G62G9B4D?tag=collagenindex-21" },
+    { brand: "Inspiriko", product: "Marine Collagen Peptides Powder - 300g", source: "Marine", dose: "10g", price: 22.08, notes: "A dedicated marine collagen peptide powder for women tailored to replenish natural radiance and support active joints.<br><br>⭐ <em>Reviewer Consensus:</em> Customers report glowing skin and noticeably thicker hair within a few weeks of regular use in their daily routine. The powder blends cleanly into tea or fruit juice without altering the flavor profile.", link: "https://www.amazon.co.uk/dp/B0CJVP7CSB?tag=collagenindex-21" },
+    { brand: "Peak Supps", product: "Grass Fed Bovine Collagen Powder - 500g", source: "Bovine", dose: "10g", price: 14.99, notes: "Pure hydrolysed grass-fed bovine protein powder offering clean, bioavailable peptides for daily fitness and joint maintenance.<br><br>⭐ <em>Reviewer Consensus:</em> Athletes and fitness users praise the pure, additive-free protein content for aiding post-workout joint and muscle recovery. It dissolves effortlessly in cold shakes or warm oats with zero lingering taste.", link: "https://www.amazon.co.uk/dp/B07X5ZH8VG?tag=collagenindex-21" },
+    { brand: "SS Sport", product: "Marine Collagen Botanical Complex - 60 Capsules", source: "Marine", dose: "1g", price: 8.99, notes: "A holistic marine collagen supplement enriched with botanical adaptogens like lion's mane and ashwagandha for wellness and beauty.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers love the unique addition of adaptogens like lion's mane and ashwagandha, reporting both calm energy and skin improvements. The capsules are easy to take, though some note it takes consistent use to see dramatic nail changes.", link: "https://www.amazon.co.uk/dp/B0C4BJ61P3?tag=collagenindex-21" },
+    { brand: "Nutrabytes", product: "Marine Collagen Powder 10,000mg - 300g", source: "Marine", dose: "10g (Types 1 & 3)", price: 22.99, notes: "High-strength unflavoured marine collagen powder delivering 10,000mg of types 1 and 3 peptides to restore youthful skin elasticity.<br><br>⭐ <em>Reviewer Consensus:</em> Customers highlight the potent 10,000mg dose, observing significant improvements in joint flexibility and skin firmness. The unflavoured powder dissolves well in hot beverages with virtually no odour.", link: "https://www.amazon.co.uk/dp/B0D54Y7JD5?tag=collagenindex-21" },
+    { brand: "Bioglan", product: "Marine Collagen 2500mg - 90 Tablets", source: "Marine", dose: "2.5g", price: 18.59, notes: "A sophisticated beauty tablet combining marine collagen with resveratrol, selenium, and biotin to protect against cellular oxidative stress.<br><br>⭐ <em>Reviewer Consensus:</em> Users praise the potent combination of resveratrol, hyaluronic acid, and collagen for keeping facial skin radiant and youthful. The tablets are slightly large, but customers find the visible beauty benefits well worth taking them daily.", link: "https://www.amazon.co.uk/dp/B07F1473KR?tag=collagenindex-21" },
+    { brand: "Izkan", product: "Collagen Gummies Strawberry - 60 Gummies", source: "Vegan", dose: "1g", price: 9.95, notes: "Gluten-free strawberry collagen gummies packed with zinc, biotin, and vitamin E to nurture glowing skin and stronger hair.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers enjoy the sweet strawberry flavour and chewable convenience, making daily beauty supplementation feel effortless. Several customers note stronger nails and glowing skin after several weeks of continuous use.", link: "https://www.amazon.co.uk/dp/B0FLTJXX1S?tag=collagenindex-21" },
+    { brand: "Seven Seas", product: "JointCare Plus Collagen - 30 Day Pack", source: "Marine", dose: "0.1g (Type II fish collagen)", price: 13.5, notes: "A dual-action 30-day supplement combining omega-3 and glucosamine capsules with collagen tablets to support cartilage and bone health.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers appreciate the targeted duo of omega-3 oil and collagen tablets, noting real relief from persistent joint and stiffness issues. The combination pack is easy to manage daily, with high trust in the brand's long heritage.", link: "https://www.amazon.co.uk/dp/B0D799F85V?tag=collagenindex-21" },
+    { brand: "Nutrality", product: "Marine Collagen Liquid 10,000mg - 500ml", source: "Marine", dose: "10g", price: 19.99, notes: "A liquid marine collagen drink supplying 10,000mg of hydrolysed peptides per dose to encourage deep hydration and firm skin.<br><br>⭐ <em>Reviewer Consensus:</em> Customers report quick absorption and noticeable improvements in skin elasticity and joint fluidity from this high-dose liquid. The fruity taste is widely praised, though some recommend keeping the bottle chilled after opening.", link: "https://www.amazon.co.uk/dp/B08P5VB3MR?tag=collagenindex-21" },
+    { brand: "MOBU", product: "Bovine Collagen Type 1 400mg - 120 Capsules", source: "Bovine", dose: "0.4g", price: 9.99, notes: "Letterbox-friendly bovine collagen type 1 capsules providing an easy daily routine to support hair, skin, and joint wellness.<br><br>⭐ <em>Reviewer Consensus:</em> Users love the letterbox-friendly packaging and budget-friendly pricing, reporting solid support for nail durability and hair growth. The capsules are small, smooth to swallow, and completely tasteless.", link: "https://www.amazon.co.uk/dp/B0994RZV6P?tag=collagenindex-21" },
+    { brand: "Nutrality", product: "Bovine Collagen Liquid Sugar Free - 500ml", source: "Bovine", dose: "10g (Types 1 & 3)", price: 19.99, notes: "A sugar-free liquid bovine collagen supplement offering types 1 and 3 peptides for effective connective tissue and skin nourishment.<br><br>⭐ <em>Reviewer Consensus:</em> Reviewers value the sugar-free liquid formula for providing high-strength collagen without unwanted carbs or calories. Many report improvements in skin firmness and reduced knee discomfort, though opinions on the berry flavour vary slightly.", link: "https://www.amazon.co.uk/dp/B08CB4SPWB?tag=collagenindex-21" },
+    { brand: "APE Nutrition", product: "Bovine Collagen Peptides - 400g", source: "Bovine", dose: "10g", price: 29.99, notes: "Grass-fed, unflavoured bovine collagen peptide powder engineered for effortless mixing to support joint strength and gut integrity.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers commend the grass-fed, clean ingredient profile that dissolves completely into black coffee without clumping or oily film. Users note enhanced joint resilience and good digestive tolerance.", link: "https://www.amazon.co.uk/dp/B0B5RB65D8?tag=collagenindex-21" },
+    { brand: "Revive Naturals", product: "Vanilla Multi Collagen Powder - 400g", source: "Multi", dose: "17g (Multi-type: Bovine, Marine & Chicken)", price: 18.99, notes: "An unsweetened vanilla multi-collagen protein powder blending five peptide sources to support keto diets and full-body vitality.<br><br>⭐ <em>Reviewer Consensus:</em> Customers love the pleasant, subtle vanilla taste that blends smoothly into keto coffee, shakes, and baking recipes. Many report reduced joint aches alongside noticeably shinier hair and healthier nails.", link: "https://www.amazon.co.uk/dp/B093T6F249?tag=collagenindex-21" },
+    { brand: "Free Soul", product: "Marine Collagen Capsules - 60 Capsules", source: "Marine", dose: "1.2g", price: 7.99, notes: "Daily marine collagen capsules formulated with hyaluronic acid, biotin, and vitamin C to target radiant skin and healthy hair.<br><br>⭐ <em>Reviewer Consensus:</em> Users find these capsules very gentle on the stomach and easy to take daily, noticing healthier nails and subtle skin hydration gains. Reviewers appreciate the compact bottle size for travel and daily routine use.", link: "https://www.amazon.co.uk/dp/B0GV523YZQ?tag=collagenindex-21" },
+    { brand: "GMOLARSUSCO", product: "Multi Collagen Peptides Powder - 1 lb", source: "Multi", dose: "10.89g (Types I, II, III, V & X)", price: 16.14, notes: "A keto and paleo friendly multi-collagen powder combining five collagen types with biotin and hyaluronic acid for balanced daily nutrition.<br><br>⭐ <em>Reviewer Consensus:</em> Buyers appreciate the versatile five-collagen profile and clean mixability in morning tea or oatmeal. Several users note steady improvements in joint comfort and nail strength without any odd aftertaste.", link: "https://www.amazon.co.uk/dp/B0G39SQ2XZ?tag=collagenindex-21" },
+    { brand: "Absolute Collagen", product: "Marine Collagen Powder - 227g", source: "Marine", dose: "8g", price: 55.99, notes: "A halal-certified marine collagen powder pouch offering 8,000mg of pure peptides per serving for simple, daily beauty support.<br><br>⭐ <em>Reviewer Consensus:</em> Customers praise the halal certification and high 8,000mg marine dose, observing noticeable improvements in skin firmness and radiance. The fine powder dissolves easily in morning drinks, though some note the premium price point.", link: "https://www.amazon.co.uk/dp/B0FY3R668S?tag=collagenindex-21" }
+];
 
         const tableBody = document.getElementById('table-body');
         const brandFilter = document.getElementById('brand-filter');
@@ -903,7 +1109,7 @@
 
         // Helper function to extract total numeric grams for sorting
         function parseDose(doseStr) {
-            if (!doseStr || doseStr === "N/A") return 0;
+            if (!doseStr || doseStr === "N/A" || doseStr.startsWith("0g")) return 0;
             let total = 0;
             const regex = /([\d.]+)\s*(mg|g)/ig;
             let match;
@@ -924,7 +1130,7 @@
             tableBody.innerHTML = ''; 
             
             if (products.length === 0) {
-                tableBody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 3rem; color: var(--text-muted);">No products match your current wellness criteria.</td></tr>';
+                tableBody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 3rem; color: var(--text-muted);">No products match your current wellness criteria.</td></tr>';
                 return;
             }
 
@@ -936,13 +1142,17 @@
                     : `£${item.price.toFixed(2)}`;
                 
                 row.innerHTML = `
-                    <td class="brand-cell brand-name">${item.brand}</td>
-                    <td class="product-cell product-name">${item.product}</td>
-                    <td class="source-cell">${getSourceTag(item.source)}</td>
-                    <td class="dose-cell"><span class="tag tag-dose">Collagen: ${item.dose}</span></td>
-                    <td class="notes-cell"><span class="notes-text">${item.notes}</span></td>
-                    <td class="price-cell price-text">${displayPrice}</td>
-                    <td class="action-cell"><a href="${item.link}" target="_blank" rel="noopener noreferrer" class="buy-btn">Buy Now</a></td>
+                    <td data-label="Product" class="combined-product-cell">
+                        <div class="brand-name">${item.brand}</div>
+                        <div class="product-name">${item.product}</div>
+                    </td>
+                    <td data-label="Specs" class="combined-specs-cell">
+                        <div class="spec-item">${getSourceTag(item.source)}</div>
+                        <div class="spec-item"><span class="tag tag-dose">Collagen: ${item.dose}</span></div>
+                    </td>
+                    <td data-label="Key Benefits" class="notes-cell"><span class="notes-text">${item.notes}</span></td>
+                    <td data-label="Price" class="price-cell price-text">${displayPrice}</td>
+                    <td data-label="Action" class="action-cell"><a href="${item.link}" target="_blank" rel="noopener noreferrer" class="buy-btn">Buy Now</a></td>
                 `;
                 tableBody.appendChild(row);
             });
