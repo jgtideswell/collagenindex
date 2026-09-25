@@ -163,7 +163,6 @@
 
         html, body {
             max-width: 100%;
-            overflow-x: hidden;
             width: 100%;
         }
 
@@ -200,7 +199,6 @@
             top: 0;
             z-index: 50;
             width: 100%;
-            max-width: 100vw;
         }
 
         header h1 a {
@@ -236,8 +234,6 @@
             flex-direction: row;
             align-items: flex-start; 
             width: 100%;
-            max-width: 100vw;
-            min-width: 0;
         }
 
         /* Sidebar Styling */
@@ -340,21 +336,19 @@
             font-weight: 300;
         }
 
+        /* Responsive Wrapping Quick-Filter Bar */
         .cofactor-pill-bar {
             display: flex;
+            flex-wrap: wrap;
             gap: 0.5rem;
-            overflow-x: auto;
-            padding-bottom: 0.6rem;
             margin-bottom: 1.75rem;
-            -webkit-overflow-scrolling: touch;
-            max-width: 100%;
-            scrollbar-width: thin;
+            width: 100%;
         }
 
         .cofactor-pill {
             background-color: var(--surface);
             border: 1px solid var(--border);
-            padding: 0.45rem 0.9rem;
+            padding: 0.45rem 0.85rem;
             border-radius: 30px;
             font-size: 0.8rem;
             font-family: 'Outfit', sans-serif;
@@ -364,7 +358,6 @@
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
-            flex-shrink: 0;
             transition: all 0.2s ease;
         }
 
@@ -389,7 +382,6 @@
             margin-bottom: 2rem;
             box-shadow: 0 6px 24px rgba(0,0,0,0.02);
             width: 100%;
-            max-width: 100%;
         }
 
         .quiz-header {
@@ -543,15 +535,22 @@
             margin-bottom: 0.75rem;
             padding: 0 0.25rem;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.75rem;
             width: 100%;
+        }
+
+        .stats-right-group {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
         .share-shortlist-btn {
             background-color: var(--surface);
             border: 1px solid var(--border);
             color: var(--text-main);
-            padding: 0.4rem 0.85rem;
+            padding: 0.45rem 0.85rem;
             border-radius: 6px;
             font-size: 0.8rem;
             font-family: 'Outfit', sans-serif;
@@ -569,6 +568,27 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
+        .compare-counter-pill {
+            background-color: var(--accent-soft);
+            border: 1px solid var(--accent);
+            color: var(--accent-hover);
+            padding: 0.45rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            transition: all 0.2s ease;
+        }
+
+        .compare-counter-pill:hover {
+            background-color: var(--accent);
+            color: #FFFFFF;
+        }
+
         /* Table Container */
         .table-container {
             background-color: var(--surface);
@@ -579,7 +599,6 @@
             -webkit-overflow-scrolling: touch;
             margin-bottom: 0.75rem; 
             width: 100%;
-            max-width: 100%;
         }
 
         table {
@@ -614,9 +633,16 @@
             background-color: #FCFAF8;
         }
 
+        .compare-checkbox {
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            accent-color: var(--accent);
+        }
+
         @media (min-width: 900px) {
-            th.col-compare, td.compare-checkbox-cell { width: 4%; text-align: center; }
-            th.col-product, td.combined-product-cell { width: 24%; }
+            th.col-compare, td.compare-checkbox-cell { width: 5%; text-align: center; }
+            th.col-product, td.combined-product-cell { width: 23%; }
             th.col-specs, td.combined-specs-cell { width: 20%; }
             th.col-value, td.combined-value-cell { width: 15%; }
             th.col-benefits, td.notes-cell { width: 23%; }
@@ -674,7 +700,6 @@
         .tag-mix { background-color: #F7EFE9; color: #7A5B45; font-size: 0.68rem; }
         .tag-lab { background-color: var(--tag-lab); color: var(--tag-lab-text); font-size: 0.68rem; }
 
-        /* Price Tier Badges */
         .tier-badge {
             display: inline-block;
             font-family: 'Outfit', sans-serif;
@@ -768,24 +793,28 @@
             color: var(--accent-hover);
         }
 
-        /* Comparison Drawer */
+        /* --- STICKY SIDE-BY-SIDE COMPARISON DRAWER --- */
         .comparison-drawer {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            max-width: 100vw;
-            background-color: var(--surface);
+            background-color: #FFFFFF;
             border-top: 2px solid var(--accent);
-            box-shadow: 0 -8px 30px rgba(0,0,0,0.12);
-            padding: 1.25rem 2.5rem;
-            z-index: 1000;
-            transform: translateY(105%);
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 -8px 30px rgba(0,0,0,0.18);
+            padding: 1rem 2.5rem;
+            z-index: 99999;
+            display: none;
+            animation: slideUp 0.3s ease forwards;
         }
 
         .comparison-drawer.open {
-            transform: translateY(0);
+            display: block;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
         }
 
         .drawer-inner {
@@ -800,23 +829,24 @@
 
         .drawer-products {
             display: flex;
-            gap: 1rem;
+            gap: 0.85rem;
             flex: 1;
             overflow-x: auto;
             max-width: 100%;
+            padding-bottom: 0.25rem;
         }
 
         .drawer-item {
             background-color: var(--background);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 0.65rem 0.9rem;
+            padding: 0.6rem 0.9rem;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 0.75rem;
             font-size: 0.85rem;
-            position: relative;
-            min-width: 200px;
+            min-width: 220px;
             flex-shrink: 0;
         }
 
@@ -826,7 +856,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: 140px;
+            max-width: 150px;
         }
 
         .drawer-item-spec {
@@ -840,9 +870,9 @@
             border: none;
             color: #C62828;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.25rem;
             line-height: 1;
-            padding: 0.2rem;
+            padding: 0 0.25rem;
         }
 
         .drawer-actions {
@@ -880,7 +910,7 @@
             display: none;
             align-items: center;
             justify-content: center;
-            z-index: 10000;
+            z-index: 100000;
             backdrop-filter: blur(3px);
             padding: 1.5rem;
         }
@@ -893,7 +923,7 @@
         .modal-card {
             background-color: var(--surface);
             border-radius: 16px;
-            max-width: 680px;
+            max-width: 760px;
             width: 100%;
             border: 1px solid var(--border);
             box-shadow: 0 10px 40px rgba(0,0,0,0.15);
@@ -923,7 +953,7 @@
 
         .duel-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
             gap: 1rem;
             margin: 1.5rem 0;
         }
@@ -936,6 +966,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            overflow: hidden;
         }
 
         .duel-col h4 {
@@ -962,6 +993,32 @@
             color: var(--text-main);
         }
 
+        /* Fixed button style to prevent spillage in comparison window */
+        .duel-btn {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            background-color: var(--surface);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            padding: 0.6rem 0.65rem;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            line-height: 1.35;
+            text-align: center;
+            white-space: normal;
+            word-wrap: break-word;
+            transition: all 0.3s ease;
+        }
+
+        .duel-btn:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: var(--surface);
+        }
+
         .toast-notification {
             position: fixed;
             bottom: 2rem;
@@ -975,7 +1032,7 @@
             font-weight: 500;
             box-shadow: 0 4px 18px rgba(0,0,0,0.2);
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            z-index: 10001;
+            z-index: 100001;
             pointer-events: none;
             max-width: 90vw;
             text-align: center;
@@ -1294,7 +1351,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* STRICT MOBILE VIEWPORT FIXES */
+        /* Mobile Breakpoint */
         @media (max-width: 868px) {
             header {
                 padding: 1rem 1.25rem;
@@ -1306,15 +1363,10 @@
 
             .main-content {
                 padding: 1.25rem 1rem !important;
-                width: 100% !important;
-                max-width: 100vw !important;
-                box-sizing: border-box;
             }
 
             .dashboard-container {
                 flex-direction: column;
-                width: 100%;
-                max-width: 100vw;
             }
 
             .sidebar {
@@ -1330,6 +1382,16 @@
                 height: auto;
                 overflow-y: visible;
                 background-color: var(--surface);
+            }
+
+            .cofactor-pill-bar {
+                gap: 0.4rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .cofactor-pill {
+                font-size: 0.76rem;
+                padding: 0.4rem 0.75rem;
             }
 
             .quiz-container {
@@ -1356,10 +1418,10 @@
             .active-filter-stats {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 0.5rem;
+                gap: 0.75rem;
             }
 
-            .active-filter-stats > div {
+            .stats-right-group {
                 width: 100%;
                 justify-content: space-between;
             }
@@ -1391,7 +1453,6 @@
                 flex: 1;
             }
 
-            /* E-COMMERCE MOBILE CARDS (Guaranteed 100% Fluid Width) */
             .table-container {
                 background-color: transparent !important;
                 border: none !important;
@@ -1403,7 +1464,6 @@
             table, tbody, th, td, tr {
                 display: block !important;
                 width: 100% !important;
-                box-sizing: border-box !important;
             }
 
             thead {
@@ -1417,7 +1477,6 @@
                 background-color: var(--surface) !important;
                 box-shadow: 0 3px 12px rgba(0,0,0,0.03) !important;
                 padding: 1.25rem !important;
-                position: relative;
             }
 
             td {
@@ -1651,7 +1710,7 @@
                 <p style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin-top: 0.6rem;">As an Amazon Associate I earn from qualifying purchases.</p>
             </section>
 
-            <!-- Quick-Filter Co-Factor Pills Bar -->
+            <!-- Quick-Filter Co-Factor Pills Bar (Fluid Flex-Wrap Layout)[cite: 4] -->
             <div class="cofactor-pill-bar">
                 <button type="button" class="cofactor-pill active" data-cofactor="all">All Formulations</button>
                 <button type="button" class="cofactor-pill" data-cofactor="Vitamin C">🍊 + Vitamin C (Synthesis Support)</button>
@@ -1689,39 +1748,41 @@
                     <div class="quiz-actions">
                         <button type="button" class="quiz-apply-btn" id="apply-goal-btn">Apply Goal Filter &darr;</button>
                         <button type="button" class="quiz-story-share-btn" id="share-archetype-btn">
-                            <span>📲</span> Share Protocol
+                            <span>📲</span> Share Your Goal![cite: 1]
                         </button>
                     </div>
                 </div>
             </section>
 
-            <!-- Shortlist Controls -->
+            <!-- Shortlist & Compare Trigger Controls[cite: 2] -->
             <div class="active-filter-stats">
-                <span id="product-count-display">Showing 50 of 50 products</span>
-                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <span id="product-count-display">Showing 50 of 50 products</span>[cite: 2]
+                <div class="stats-right-group">
                     <button type="button" class="share-shortlist-btn" id="share-shortlist-btn">
-                        <span>🔗</span> Share This Shortlist
+                        <span>🔗</span> Share Shortlist[cite: 2]
                     </button>
-                    <span>Compare up to 3 side-by-side</span>
+                    <button type="button" class="compare-counter-pill" id="compare-counter-pill">
+                        <span>⚖️</span> Compare (0/3 selected)
+                    </button>
                 </div>
             </div>
 
-            <!-- Table Container -->
+            <!-- Table Container[cite: 2] -->
             <div class="table-container">
                 <table id="collagen-table">
                     <caption class="sr-only">UK Collagen Supplement Comparison Table 2026: Dosing, Source, Lab Testing, and Yield Benchmarks</caption>
                     <thead>
                         <tr>
-                            <th scope="col" class="col-compare">VS</th>
-                            <th scope="col" class="col-product">Product</th>
-                            <th scope="col" class="col-specs">Specs & Mixability</th>
-                            <th scope="col" class="col-value">Value Benchmark</th>
-                            <th scope="col" class="col-benefits">Benefits & Lab Origin</th>
-                            <th scope="col" class="col-action">Action</th>
+                            <th scope="col" class="col-compare">VS</th>[cite: 2]
+                            <th scope="col" class="col-product">Product</th>[cite: 2]
+                            <th scope="col" class="col-specs">Specs & Mixability</th>[cite: 2]
+                            <th scope="col" class="col-value">Value Benchmark</th>[cite: 2]
+                            <th scope="col" class="col-benefits">Benefits & Lab Origin</th>[cite: 2]
+                            <th scope="col" class="col-action">Action</th>[cite: 2]
                         </tr>
                     </thead>
                     <tbody id="table-body">
-                        <!-- Populated dynamically and styled fluidly -->
+                        <!-- Populated by JS -->
                     </tbody>
                 </table>
             </div>
@@ -1853,12 +1914,12 @@
         </div>
     </div>
 
-    <!-- SIDE-BY-SIDE DUEL MODAL -->
+    <!-- SIDE-BY-SIDE DUEL MODAL[cite: 3] -->
     <div class="modal-overlay" id="duel-modal">
         <div class="modal-card">
             <button class="modal-close-btn" id="close-duel-modal">&times;</button>
-            <h3 class="modal-title">⚔️ Side-by-Side Spec Showdown</h3>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom: 1rem;">Direct raw data comparison for your shortlisted supplements:</p>
+            <h3 class="modal-title">Side-by-Side Spec Showdown</h3>[cite: 3]
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom: 1rem;">Direct raw data comparison for your shortlisted supplements:</p>[cite: 3]
             <div class="duel-grid" id="duel-grid-container"></div>
         </div>
     </div>
@@ -1964,6 +2025,7 @@
     const productCountDisplay = document.getElementById('product-count-display');
     const comparisonDrawer = document.getElementById('comparison-drawer');
     const drawerProductsContainer = document.getElementById('drawer-products-container');
+    const compareCounterPill = document.getElementById('compare-counter-pill');
     const toast = document.getElementById('toast-notification');
 
     let activeCofactor = 'all';
@@ -2049,7 +2111,7 @@
                 } else {
                     comparedItems = comparedItems.filter(c => c.product !== prodName);
                 }
-                updateComparisonDrawer();
+                updateComparisonUI();
             });
         });
 
@@ -2074,7 +2136,9 @@
         });
     }
 
-    function updateComparisonDrawer() {
+    function updateComparisonUI() {
+        compareCounterPill.innerHTML = `<span>⚖️</span> Compare (${comparedItems.length}/3 selected)`;
+
         if (comparedItems.length > 0) {
             comparisonDrawer.classList.add('open');
         } else {
@@ -2099,19 +2163,26 @@
             btn.addEventListener('click', () => {
                 const prodName = btn.getAttribute('data-product');
                 comparedItems = comparedItems.filter(c => c.product !== prodName);
-                updateComparisonDrawer();
-                updateView();
+                updateComparisonUI();
+                updateCheckboxes();
             });
+        });
+    }
+
+    function updateCheckboxes() {
+        document.querySelectorAll('.compare-checkbox').forEach(cb => {
+            const prodName = cb.getAttribute('data-product');
+            cb.checked = comparedItems.some(c => c.product === prodName);
         });
     }
 
     document.getElementById('clear-compare-btn').addEventListener('click', () => {
         comparedItems = [];
-        updateComparisonDrawer();
-        updateView();
+        updateComparisonUI();
+        updateCheckboxes();
     });
 
-    document.getElementById('open-duel-modal-btn').addEventListener('click', () => {
+    function openComparisonModal() {
         if (comparedItems.length < 2) {
             alert("Please select at least 2 products to compare side-by-side.");
             return;
@@ -2165,14 +2236,17 @@
                 </div>
 
                 <div style="margin-top: 1.5rem;">
-                    <a href="${item.link}" target="_blank" rel="sponsored noopener noreferrer" class="buy-btn" style="display:block; text-align:center;">Check Today's Price on Amazon &rarr;</a>
+                    <a href="${item.link}" target="_blank" rel="sponsored noopener noreferrer" class="duel-btn">Check Today's Price on Amazon &rarr;</a>
                 </div>
             `;
             duelContainer.appendChild(col);
         });
 
         document.getElementById('duel-modal').classList.add('active');
-    });
+    }
+
+    document.getElementById('open-duel-modal-btn').addEventListener('click', openComparisonModal);
+    compareCounterPill.addEventListener('click', openComparisonModal);
 
     document.getElementById('close-duel-modal').addEventListener('click', () => {
         document.getElementById('duel-modal').classList.remove('active');
@@ -2256,15 +2330,21 @@
 
     const goalDescriptions = {
         skin: {
+            title: "Skin & Radiance Seeker ✨",
             source: 'Marine',
+            details: "Target: 10g Marine Type I Collagen Peptides for fine lines & hydration",
             text: '<strong>Match:</strong> For <em>Skin, Hair & Anti-Ageing</em>, we filter directly to high-bioavailability <strong>Type I Marine Collagen</strong> formulas.'
         },
         joints: {
+            title: "Joint Mobility & Flexibility 🦴",
             source: 'Bovine',
+            details: "Target: Types I, II & III Cartilage Cushioning Protocol",
             text: '<strong>Match:</strong> For <em>Joint Mobility & Cartilage</em>, we filter to <strong>Bovine & Multi-Type Collagen</strong> formulas rich in Types I, II, and III.'
         },
         fitness: {
+            title: "Active Muscle & Tendon Recovery 🏃",
             source: 'Bovine',
+            details: "Target: 10g–20g Grass-Fed Bovine Peptides for connective tissue repair",
             text: '<strong>Match:</strong> For <em>Muscle, Gut & Recovery</em>, we filter to pure <strong>Grass-Fed Bovine Peptides</strong> delivering full amino-acid structural support.'
         }
     };
@@ -2284,6 +2364,23 @@
         sortFilter.value = 'yield-desc';
         updateView();
         document.getElementById('collagen-table').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('share-archetype-btn').addEventListener('click', () => {
+        const config = goalDescriptions[currentGoal];
+        const shareText = `My Collagen Goal: ${config.title}\n${config.details}\nCompare top UK supplements on Collagen Index:`;
+        const shareUrl = window.location.href;
+
+        if (navigator.share) {
+            navigator.share({
+                title: "My Collagen Goal",
+                text: shareText,
+                url: shareUrl
+            }).catch(() => {});
+        } else {
+            navigator.clipboard.writeText(`${shareText} ${shareUrl}`);
+            showToast("Goal details copied to clipboard!");
+        }
     });
 
     document.getElementById('share-shortlist-btn').addEventListener('click', () => {
