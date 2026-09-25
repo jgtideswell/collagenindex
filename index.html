@@ -12,7 +12,7 @@
     </script>
     
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>50 Best Collagen Supplements UK (2026): Marine vs Bovine Tested</title>
     <meta name="description" content="Compare 50 top UK marine and bovine collagen supplements by active peptide dosage, coffee mixability, lab certifications, and total protein yield.">
     <link rel="canonical" href="https://collagenindex.co.uk/">
@@ -155,10 +155,16 @@
             --tag-lab-text: #34495E;
         }
 
-        * {
+        *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         body {
@@ -193,6 +199,8 @@
             position: sticky;
             top: 0;
             z-index: 50;
+            width: 100%;
+            max-width: 100vw;
         }
 
         header h1 a {
@@ -227,6 +235,9 @@
             flex: 1;
             flex-direction: row;
             align-items: flex-start; 
+            width: 100%;
+            max-width: 100vw;
+            min-width: 0;
         }
 
         /* Sidebar Styling */
@@ -303,11 +314,13 @@
             padding: 2.25rem 3rem;
             background-color: var(--background);
             min-width: 0; 
+            max-width: 100%;
         }
 
         .page-intro {
             margin-bottom: 2rem;
             max-width: 900px;
+            width: 100%;
         }
 
         .page-intro h2 {
@@ -317,6 +330,7 @@
             color: var(--text-main);
             margin-bottom: 0.75rem;
             line-height: 1.25;
+            word-break: break-word;
         }
 
         .page-intro p {
@@ -333,6 +347,8 @@
             padding-bottom: 0.6rem;
             margin-bottom: 1.75rem;
             -webkit-overflow-scrolling: touch;
+            max-width: 100%;
+            scrollbar-width: thin;
         }
 
         .cofactor-pill {
@@ -348,6 +364,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
+            flex-shrink: 0;
             transition: all 0.2s ease;
         }
 
@@ -371,6 +388,8 @@
             padding: 1.75rem 2rem;
             margin-bottom: 2rem;
             box-shadow: 0 6px 24px rgba(0,0,0,0.02);
+            width: 100%;
+            max-width: 100%;
         }
 
         .quiz-header {
@@ -378,6 +397,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .quiz-header h3 {
@@ -403,6 +424,7 @@
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 0.85rem;
             margin-bottom: 1.25rem;
+            width: 100%;
         }
 
         .goal-option-btn {
@@ -418,6 +440,7 @@
             display: flex;
             flex-direction: column;
             gap: 0.25rem;
+            width: 100%;
         }
 
         .goal-option-btn .goal-title {
@@ -455,6 +478,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 1.25rem;
+            width: 100%;
         }
 
         .quiz-result-text {
@@ -467,6 +491,7 @@
             display: flex;
             gap: 0.6rem;
             align-items: center;
+            flex-shrink: 0;
         }
 
         .quiz-apply-btn {
@@ -519,6 +544,7 @@
             padding: 0 0.25rem;
             flex-wrap: wrap;
             gap: 0.5rem;
+            width: 100%;
         }
 
         .share-shortlist-btn {
@@ -552,6 +578,8 @@
             overflow-x: auto; 
             -webkit-overflow-scrolling: touch;
             margin-bottom: 0.75rem; 
+            width: 100%;
+            max-width: 100%;
         }
 
         table {
@@ -611,6 +639,7 @@
             font-size: 1.12rem;
             color: var(--text-main);
             line-height: 1.25;
+            word-break: break-word;
         }
 
         .spec-item {
@@ -660,6 +689,7 @@
             font-size: 0.76rem;
             color: var(--text-muted);
             display: block;
+            word-break: break-word;
         }
 
         .yield-highlight {
@@ -676,6 +706,7 @@
             line-height: 1.45;
             display: inline-block;
             font-weight: 300;
+            word-break: break-word;
         }
         
         .notes-text strong {
@@ -695,7 +726,6 @@
             gap: 0.45rem;
         }
 
-        /* High-converting, Amazon-compliant button */
         .buy-btn {
             display: inline-block;
             background-color: var(--surface);
@@ -708,6 +738,7 @@
             font-weight: 500;
             transition: all 0.3s ease;
             white-space: nowrap;
+            text-align: center;
         }
         
         .buy-btn:hover {
@@ -729,6 +760,7 @@
             cursor: pointer;
             transition: all 0.2s ease;
             font-size: 0.95rem;
+            flex-shrink: 0;
         }
 
         .share-item-btn:hover {
@@ -742,6 +774,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
+            max-width: 100vw;
             background-color: var(--surface);
             border-top: 2px solid var(--accent);
             box-shadow: 0 -8px 30px rgba(0,0,0,0.12);
@@ -762,6 +795,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 1.5rem;
+            width: 100%;
         }
 
         .drawer-products {
@@ -769,6 +803,7 @@
             gap: 1rem;
             flex: 1;
             overflow-x: auto;
+            max-width: 100%;
         }
 
         .drawer-item {
@@ -781,7 +816,8 @@
             gap: 0.75rem;
             font-size: 0.85rem;
             position: relative;
-            min-width: 220px;
+            min-width: 200px;
+            flex-shrink: 0;
         }
 
         .drawer-item-title {
@@ -790,7 +826,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: 160px;
+            max-width: 140px;
         }
 
         .drawer-item-spec {
@@ -806,12 +842,14 @@
             cursor: pointer;
             font-size: 1rem;
             line-height: 1;
+            padding: 0.2rem;
         }
 
         .drawer-actions {
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            flex-shrink: 0;
         }
 
         .show-duel-btn {
@@ -939,6 +977,8 @@
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 10001;
             pointer-events: none;
+            max-width: 90vw;
+            text-align: center;
         }
 
         .toast-notification.show {
@@ -953,6 +993,7 @@
             padding: 2.25rem;
             margin: 3rem 0;
             box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            width: 100%;
         }
 
         .education-header {
@@ -966,7 +1007,7 @@
 
         .source-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.75rem;
             margin-bottom: 2.25rem;
         }
@@ -1034,6 +1075,7 @@
             margin: 0 auto 3rem auto;
             color: var(--text-main);
             line-height: 1.75;
+            width: 100%;
         }
 
         .seo-section h2 {
@@ -1042,6 +1084,7 @@
             font-weight: 500;
             margin-bottom: 1.25rem;
             color: var(--text-main);
+            word-break: break-word;
         }
 
         .seo-section h3 {
@@ -1050,6 +1093,7 @@
             font-weight: 500;
             margin-top: 2.5rem;
             margin-bottom: 0.85rem;
+            word-break: break-word;
         }
 
         .seo-section p {
@@ -1057,6 +1101,7 @@
             margin-bottom: 1.25rem;
             font-size: 1.05rem;
             color: #423E3A;
+            word-break: break-word;
         }
 
         /* Academic Citations Section */
@@ -1067,6 +1112,7 @@
             padding: 1.75rem 2rem;
             margin: 3rem auto;
             max-width: 900px;
+            width: 100%;
         }
 
         .citations-section h4 {
@@ -1084,6 +1130,7 @@
             font-size: 0.86rem;
             color: var(--text-muted);
             line-height: 1.65;
+            word-break: break-word;
         }
 
         .citations-list li {
@@ -1102,6 +1149,7 @@
             border-radius: 10px;
             background-color: var(--surface);
             overflow: hidden;
+            width: 100%;
         }
 
         .faq-item {
@@ -1122,6 +1170,7 @@
             user-select: none;
             background-color: var(--surface);
             transition: background-color 0.2s ease;
+            gap: 1rem;
         }
 
         .faq-question:hover {
@@ -1144,6 +1193,7 @@
         .faq-icon {
             font-size: 1.2rem;
             transition: transform 0.2s ease;
+            flex-shrink: 0;
         }
 
         .faq-item.open .faq-icon {
@@ -1156,6 +1206,7 @@
             padding: 3rem 1.5rem;
             background-color: var(--surface);
             border-top: 1px solid var(--border);
+            width: 100%;
         }
 
         .affiliate-disclosure {
@@ -1175,7 +1226,7 @@
             color: var(--text-main);
             text-decoration: none;
             font-size: 0.9rem;
-            margin: 0 1rem;
+            margin: 0 0.75rem;
             font-weight: 500;
         }
 
@@ -1243,27 +1294,36 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Mobile Breakpoint */
+        /* STRICT MOBILE VIEWPORT FIXES */
         @media (max-width: 868px) {
             header {
                 padding: 1rem 1.25rem;
             }
 
+            header h1 a {
+                font-size: 1.35rem;
+            }
+
             .main-content {
-                padding: 1.25rem;
+                padding: 1.25rem 1rem !important;
+                width: 100% !important;
+                max-width: 100vw !important;
+                box-sizing: border-box;
             }
 
             .dashboard-container {
                 flex-direction: column;
+                width: 100%;
+                max-width: 100vw;
             }
 
             .sidebar {
-                width: 100%;
+                width: 100% !important;
                 border-right: none;
                 border-bottom: 1px solid var(--border);
-                padding: 1.25rem;
+                padding: 1.25rem 1rem !important;
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
                 gap: 0.85rem;
                 position: relative; 
                 top: 0;
@@ -1272,12 +1332,40 @@
                 background-color: var(--surface);
             }
 
-            .sidebar .filter-group-wide {
-                grid-column: span 2;
+            .quiz-container {
+                padding: 1.25rem 1rem !important;
+            }
+
+            .quiz-result-box {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 1rem !important;
+            }
+
+            .quiz-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .quiz-apply-btn, .quiz-story-share-btn {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .active-filter-stats {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .active-filter-stats > div {
+                width: 100%;
+                justify-content: space-between;
             }
 
             .comparison-drawer {
-                padding: 1rem;
+                padding: 1rem 0.85rem;
             }
 
             .drawer-inner {
@@ -1290,41 +1378,58 @@
                 flex-direction: column;
             }
 
+            .drawer-item {
+                min-width: 100%;
+            }
+
+            .drawer-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .show-duel-btn {
+                flex: 1;
+            }
+
+            /* E-COMMERCE MOBILE CARDS (Guaranteed 100% Fluid Width) */
             .table-container {
-                background-color: transparent;
-                border: none;
-                box-shadow: none;
-                overflow-x: hidden; 
+                background-color: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+                overflow-x: hidden !important; 
+                margin-bottom: 1.5rem;
             }
 
             table, tbody, th, td, tr {
-                display: block;
+                display: block !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
             }
 
             thead {
-                display: none;
+                display: none !important;
             }
 
             tbody tr {
-                border: 1px solid var(--border);
-                border-radius: 12px;
-                margin-bottom: 1.5rem;
-                background-color: var(--surface);
-                box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-                padding: 1.4rem;
+                border: 1px solid var(--border) !important;
+                border-radius: 12px !important;
+                margin-bottom: 1.25rem !important;
+                background-color: var(--surface) !important;
+                box-shadow: 0 3px 12px rgba(0,0,0,0.03) !important;
+                padding: 1.25rem !important;
                 position: relative;
             }
 
             td {
                 border: none !important;
                 padding: 0 !important;
-                width: 100%;
-                display: block;
+                width: 100% !important;
+                display: block !important;
             }
 
             .compare-checkbox-cell {
                 margin-bottom: 0.75rem;
-                display: flex;
+                display: flex !important;
                 align-items: center;
                 gap: 0.5rem;
                 font-size: 0.85rem;
@@ -1343,7 +1448,7 @@
             .combined-value-cell {
                 margin-bottom: 1.2rem;
                 padding: 0.75rem !important;
-                background-color: var(--background);
+                background-color: var(--background) !important;
                 border-radius: 8px;
             }
 
@@ -1353,29 +1458,38 @@
                 border-bottom: 1px solid var(--border) !important;
             }
 
+            .action-cell {
+                width: 100% !important;
+            }
+
             .action-cell-content {
-                width: 100%;
+                width: 100% !important;
                 display: flex;
+                gap: 0.5rem;
             }
 
             .action-cell .buy-btn {
                 flex: 1;
                 text-align: center;
-                padding: 0.9rem;
-                font-size: 0.95rem;
+                padding: 0.85rem 0.5rem;
+                font-size: 0.88rem;
                 font-weight: 600;
             }
 
             .action-cell .share-item-btn {
-                width: 48px;
-                height: 48px;
+                width: 44px;
+                height: 44px;
                 font-size: 1.1rem;
+            }
+
+            .education-section, .citations-section {
+                padding: 1.5rem 1rem !important;
             }
 
             .cookie-banner {
                 flex-direction: column;
                 text-align: center;
-                padding: 1.5rem;
+                padding: 1.25rem 1rem;
             }
 
             .cookie-btn {
@@ -1505,7 +1619,6 @@
                 </select>
             </div>
 
-            <!-- Amazon-Compliant Value Tier Filter -->
             <div class="filter-group">
                 <h3>Typical Price Tier</h3>
                 <select id="tier-filter">
@@ -1593,7 +1706,7 @@
                 </div>
             </div>
 
-            <!-- Amazon-Compliant Pre-Rendered Table (Immediate SEO Crawler Indexation) -->
+            <!-- Table Container -->
             <div class="table-container">
                 <table id="collagen-table">
                     <caption class="sr-only">UK Collagen Supplement Comparison Table 2026: Dosing, Source, Lab Testing, and Yield Benchmarks</caption>
@@ -1608,109 +1721,7 @@
                         </tr>
                     </thead>
                     <tbody id="table-body">
-                        <!-- Fully Compliant Static Rows -->
-                        <tr>
-                            <td class="compare-checkbox-cell">
-                                <input type="checkbox" class="compare-checkbox" data-product="True Bovine Collagen Powder - 15 x 5g">
-                            </td>
-                            <td class="combined-product-cell" scope="row">
-                                <div class="brand-name">Ancient + Brave</div>
-                                <div class="product-name">True Bovine Collagen Powder - 15 x 5g</div>
-                            </td>
-                            <td class="combined-specs-cell">
-                                <div class="spec-item">
-                                    <span class="tag tag-bovine">Bovine</span>
-                                    <span class="tag tag-format">Powder</span>
-                                    <span class="tag tag-mix">Instant Dissolve</span>
-                                </div>
-                                <div class="spec-item"><span class="tag tag-dose">Dose: 5g</span></div>
-                            </td>
-                            <td class="combined-value-cell">
-                                <span class="tier-badge">££ <span class="tier-label">Mid-Range Tier</span></span>
-                                <span class="tier-label">75g Total Active Yield (15 Servings)</span>
-                                <span class="yield-highlight">Tier 2: Premium Travel Sachets</span>
-                            </td>
-                            <td class="notes-cell">
-                                <span class="notes-text">Pure hydrolysed grass-fed bovine peptides. Completely tasteless and dissolves instantly in coffee.</span>
-                                <div style="margin-top: 0.4rem; display: flex; gap: 0.3rem; flex-wrap: wrap;">
-                                    <span class="tag tag-lab">✓ Grass-Fed</span>
-                                    <span class="tag tag-lab">✓ Lab Tested</span>
-                                </div>
-                            </td>
-                            <td class="action-cell">
-                                <div class="action-cell-content">
-                                    <a href="https://www.amazon.co.uk/dp/B07YFX8B58?tag=collagenindex-21" target="_blank" rel="sponsored noopener noreferrer" class="buy-btn">Check Today's Price on Amazon &rarr;</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="compare-checkbox-cell">
-                                <input type="checkbox" class="compare-checkbox" data-product="Marine Collagen Powder - 400g">
-                            </td>
-                            <td class="combined-product-cell" scope="row">
-                                <div class="brand-name">Star Nutra</div>
-                                <div class="product-name">Marine Collagen Powder - 400g</div>
-                            </td>
-                            <td class="combined-specs-cell">
-                                <div class="spec-item">
-                                    <span class="tag tag-marine">Marine</span>
-                                    <span class="tag tag-format">Powder</span>
-                                    <span class="tag tag-mix">Swirl Required</span>
-                                </div>
-                                <div class="spec-item"><span class="tag tag-dose">Dose: 10g</span></div>
-                            </td>
-                            <td class="combined-value-cell">
-                                <span class="tier-badge">££ <span class="tier-label">Mid-Range Tier</span></span>
-                                <span class="tier-label">400g Total Active Yield (40 Servings)</span>
-                                <span class="yield-highlight">Tier 1: Exceptional Active Yield</span>
-                            </td>
-                            <td class="notes-cell">
-                                <span class="notes-text">Wild-caught type I marine peptides. Superb price-per-gram for unflavoured wild fish collagen.</span>
-                                <div style="margin-top: 0.4rem; display: flex; gap: 0.3rem; flex-wrap: wrap;">
-                                    <span class="tag tag-lab">✓ MSC Certified</span>
-                                    <span class="tag tag-lab">✓ Lab Tested</span>
-                                </div>
-                            </td>
-                            <td class="action-cell">
-                                <div class="action-cell-content">
-                                    <a href="https://www.amazon.co.uk/dp/B0GYPXHKL3?tag=collagenindex-21" target="_blank" rel="sponsored noopener noreferrer" class="buy-btn">Check Today's Price on Amazon &rarr;</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="compare-checkbox-cell">
-                                <input type="checkbox" class="compare-checkbox" data-product="Bovine Collagen Powder - 500g">
-                            </td>
-                            <td class="combined-product-cell" scope="row">
-                                <div class="brand-name">Nutravita</div>
-                                <div class="product-name">Bovine Collagen Powder - 500g</div>
-                            </td>
-                            <td class="combined-specs-cell">
-                                <div class="spec-item">
-                                    <span class="tag tag-bovine">Bovine</span>
-                                    <span class="tag tag-format">Powder</span>
-                                    <span class="tag tag-mix">Instant Dissolve</span>
-                                </div>
-                                <div class="spec-item"><span class="tag tag-dose">Dose: 10g</span></div>
-                            </td>
-                            <td class="combined-value-cell">
-                                <span class="tier-badge">££ <span class="tier-label">Mid-Range Tier</span></span>
-                                <span class="tier-label">500g Total Active Yield (50 Servings)</span>
-                                <span class="yield-highlight">Tier 1: Exceptional Active Yield</span>
-                            </td>
-                            <td class="notes-cell">
-                                <span class="notes-text">Virtually odourless grass-fed bovine peptides. Benchmark price-per-gram in the UK.</span>
-                                <div style="margin-top: 0.4rem; display: flex; gap: 0.3rem; flex-wrap: wrap;">
-                                    <span class="tag tag-lab">✓ Grass-Fed</span>
-                                    <span class="tag tag-lab">✓ Lab Tested</span>
-                                </div>
-                            </td>
-                            <td class="action-cell">
-                                <div class="action-cell-content">
-                                    <a href="https://www.amazon.co.uk/dp/B096Y5T5R1?tag=collagenindex-21" target="_blank" rel="sponsored noopener noreferrer" class="buy-btn">Check Today's Price on Amazon &rarr;</a>
-                                </div>
-                            </td>
-                        </tr>
+                        <!-- Populated dynamically and styled fluidly -->
                     </tbody>
                 </table>
             </div>
@@ -1874,7 +1885,6 @@
     </div>
 
     <script>
-    // Amazon-Compliant Database with Tiers and Active Yield
     const data = [
         { brand: "Bettervits", product: "Marine Collagen Complex - 60 Capsules", source: "Marine", format: "Capsules", tier: "£££", tierDesc: "Premium Tier", servings: 30, dose: "1g", yieldGrams: 30, yieldRating: "Tier 3: Daily Target Dose", mixability: "N/A (Pill)", cofactors: ["Hyaluronic Acid", "Vitamin C", "Biotin"], certs: ["Lab Tested"], notes: "Enriched with hyaluronic acid, vitamin C, and biotin for skin hydration and hair density.", link: "https://www.amazon.co.uk/dp/B09W82SY2B?tag=collagenindex-21" },
         { brand: "Ancient + Brave", product: "True Bovine Collagen Powder - 15 x 5g", source: "Bovine", format: "Powder", tier: "££", tierDesc: "Mid-Range Tier", servings: 15, dose: "5g", yieldGrams: 75, yieldRating: "Tier 2: Premium Travel Sachets", mixability: "Instant Dissolve", cofactors: ["Pure"], certs: ["Grass-Fed", "Lab Tested"], notes: "Pure hydrolysed grass-fed bovine peptides. Completely tasteless and dissolves instantly in coffee.", link: "https://www.amazon.co.uk/dp/B07YFX8B58?tag=collagenindex-21" },
@@ -1974,7 +1984,7 @@
         productCountDisplay.textContent = `Showing ${products.length} of ${data.length} products`;
 
         if (products.length === 0) {
-            tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 3.5rem; color: var(--text-muted); font-size: 1rem;">No collagen supplements match your active filter criteria. Try resetting filters.</td></tr>';
+            tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 3rem 1rem; color: var(--text-muted); font-size: 1rem;">No collagen supplements match your active filter criteria. Try resetting filters.</td></tr>';
             return;
         }
 
